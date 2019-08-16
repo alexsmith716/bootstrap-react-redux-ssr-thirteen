@@ -362,29 +362,29 @@ module.exports = {
     // service worker will cache webpack's bundles' emitted assets
     // precache the static assests
 
-    new GenerateSW({
-      swDest: 'service-worker.js',
+    // new GenerateSW({
+    //   swDest: 'service-worker.js',
 
-      // instructs the latest service worker to take control of all clients as soon as it's activated
-      clientsClaim: true,
-      // instructs the latest service worker to activate as soon as it enters the waiting phase
-      skipWaiting: true,
+    //   // instructs the latest service worker to take control of all clients as soon as it's activated
+    //   clientsClaim: true,
+    //   // instructs the latest service worker to activate as soon as it enters the waiting phase
+    //   skipWaiting: true,
 
-      importWorkboxFrom: 'local',
-
-      directoryIndex: '/dist/',
-      navigateFallback: '/dist/index.html'
-    }),
-
-    // new InjectManifest({
-    //   swSrc: path.join(pathAssetsPath, '/service-worker.js'),
-    //   swDest: 'sw.js',
     //   importWorkboxFrom: 'local',
-    //   // globDirectory: 'build/',
-    //   // globPatterns: [
-    //   //   'dist/manifest.json',
-    //   // ],
-    // })
+
+    //   directoryIndex: '/dist/',
+    //   navigateFallback: '/dist/index.html'
+    // }),
+
+    new InjectManifest({
+      swSrc: path.join(pathAssetsPath, '/service-worker.js'),
+      swDest: 'service-worker.js',
+      importWorkboxFrom: 'local',
+      // globDirectory: 'build/',
+      // globPatterns: [
+      //   'dist/manifest.json',
+      // ],
+    })
 
     // new OfflinePlugin(),
 

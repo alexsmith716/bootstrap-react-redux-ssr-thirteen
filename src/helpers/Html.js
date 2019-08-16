@@ -16,6 +16,9 @@ const Html = ({ assets, store, content }) => {
     <html lang="en-US">
       <head>
 
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+        <meta content="utf-8" http-equiv="encoding" />
+
         {helmet.base.toComponent()}
         {helmet.title.toComponent()}
         {helmet.meta.toComponent()}

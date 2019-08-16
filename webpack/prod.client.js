@@ -9,19 +9,20 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 // Extract CSS from chunks into multiple stylesheets + HMR 
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
-// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const { GenerateSW, InjectManifest } = require('workbox-webpack-plugin');
+// const { GenerateSW } = require('workbox-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// const OfflinePlugin = require('offline-plugin');
-// const WebpackPwaManifest = require('webpack-pwa-manifest')
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+// https://github.com/arthurbergmz/webpack-pwa-manifest
 
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const { DuplicatesPlugin } = require('inspectpack/plugin');
 
-const rootPath = path.resolve(__dirname, '..');
-const assetsPath = path.resolve(rootPath, './build/dist');
-const pathAssetsPath = path.dirname(assetsPath);
+// join: absolute | resolve: relative | dirname: blob/dir prefix
+const rootPath = path.resolve(__dirname, '../');
+const buildPath = path.resolve(rootPath, './build'); // ../../build
+const assetPath = path.resolve(rootPath, './build/dist'); // ../../build/dist
 
 const publicPath = '/dist/';
 const data = Object.create(null);
@@ -283,9 +284,38 @@ module.exports = {
 
   plugins: [
 
-    new CopyPlugin([
-      { from: path.resolve(__dirname, '../build/manifest.json'), to: assetsPath },
-    ]),
+    // new CopyPlugin([
+    //   // { from: path.resolve(buildPath, './manifest.json'), to: assetPath },
+    //   { from: path.resolve(buildPath, './app.js'), to: assetPath },
+    // ]),
+
+    new WebpackPwaManifest({
+      icons: [
+        {
+          src: path.resolve(buildPath, './launcher-icon-2x.png'),
+          sizes: '96x96',
+          type: 'image/png'
+        },
+        {
+          src: path.resolve(buildPath, './launcher-icon-3x.png'),
+          sizes: '144x144',
+          type: 'image/png'
+        },
+        {
+          src: path.resolve(buildPath, './launcher-icon-4x.png'),
+          sizes: '192x192',
+          type: 'image/png'
+        }
+      ],
+      name: 'Applying thunk middleware for Redux',
+      short_name: 'ElectionApp2019',
+      start_url: '/',
+      display: 'standalone',
+      orientation: 'landscape',
+      theme_color: '#87CEFF',
+      background_color: '#87CEFF',
+      crossorigin: 'use-credentials'
+    }),
 
     new WebpackBar({ name: 'Client' }),
     // new WebpackAssetsManifest({ publicPath }),
@@ -358,16 +388,14 @@ module.exports = {
     //   verbose: true
     // }),
 
-    // generates a service worker
-    // service worker will cache webpack's bundles' emitted assets
-    // precache the static assests
+    // =============================================================
+    // globDirectory: base directory to match globPatterns against, relative to the current working directory
+    // [maximumFileSizeToCacheInBytes] will not have any effect, it only modifies files matched by 'globPatterns'
 
     // new GenerateSW({
     //   swDest: 'service-worker.js',
 
-    //   // instructs the latest service worker to take control of all clients as soon as it's activated
     //   clientsClaim: true,
-    //   // instructs the latest service worker to activate as soon as it enters the waiting phase
     //   skipWaiting: true,
 
     //   importWorkboxFrom: 'local',
@@ -377,34 +405,14 @@ module.exports = {
     // }),
 
     new InjectManifest({
-      swSrc: path.join(pathAssetsPath, '/service-worker.js'),
+      swSrc: path.resolve(buildPath, './service-worker.js'),
       swDest: 'service-worker.js',
       importWorkboxFrom: 'local',
-      // globDirectory: 'build/',
+      // globDirectory: './build',
       // globPatterns: [
-      //   'dist/manifest.json',
+      //   'manifest.*.json',
       // ],
+      // // exclude: [] // aware: default values may be excluded from precache
     })
-
-    // new OfflinePlugin(),
-
-    // new SWPrecacheWebpackPlugin({
-    //   cacheId: 'bootstrap-react-redux-ssr-thirteen',
-    //   filename: 'service-worker.js',
-    //   maximumFileSizeToCacheInBytes: 8388608,
-
-    //   staticFileGlobs: [
-    //     `${path.dirname(assetsPath)}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`,
-    //     `${path.dirname(assetsPath)}/**/manifest.json`,
-    //   ],
-
-    //   stripPrefix: path.dirname(assetsPath),
-
-    //   directoryIndex: '/dist/',
-    //   verbose: true,
-    //   // clientsClaim: true,
-    //   // skipWaiting: false,
-    //   navigateFallback: '/dist/index.html'
-    // }),
   ],
 };

@@ -23,7 +23,6 @@ import apiClient from './helpers/apiClient';
 import configureStore from './redux/configureStore';
 import isOnline from './utils/isOnline';
 import NProgress from 'nprogress';
-import './js/app';
 
 // =====================================================================
 

@@ -23,6 +23,7 @@ import apiClient from './helpers/apiClient';
 import configureStore from './redux/configureStore';
 import isOnline from './utils/isOnline';
 import NProgress from 'nprogress';
+import './js/app';
 
 // =====================================================================
 
@@ -192,16 +193,29 @@ const providers = {
   //   );
   // }
 
-  // const isLocalhost = Boolean(
-  //   window.location.hostname === 'localhost' ||
-  //   window.location.hostname === '[::1]' ||
-  //   window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
-  // );
+
+  // ServiceWorkerRegistration:
+  // 
+  // {scope: "https://localhost:8080/dist/", updateViaCache: "imports", active: null, installing: ServiceWorker, navigationPreload: NavigationPreloadManager, …}
+  // active: ServiceWorker {scriptURL: "https://localhost:8080/dist/service-worker.js", state: "activated", onerror: null, onstatechange: ƒ}
+  // backgroundFetch: BackgroundFetchManager {}
+  // installing: null
+  // navigationPreload: NavigationPreloadManager {}
+  // onupdatefound: ƒ ()
+  // paymentManager: PaymentManager {instruments: PaymentInstruments, userHint: ""}
+  // pushManager: PushManager {}
+  // scope: "https://localhost:8080/dist/"
+  // sync: SyncManager {}
+  // updateViaCache: "imports"
+  // waiting: null
+  // __proto__: ServiceWorkerRegistration
+  // { scope: '/dist/' }
 
   if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
     try {
-      const registration = await navigator.serviceWorker.register('/dist/service-worker.js', { scope: '/' });
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator YES!! <<<<<<<<<<<<<');
+      const registration = await navigator.serviceWorker.register('/service-worker.js');
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker in navigator > SW Registered! > ');
+      // registration
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
@@ -226,8 +240,10 @@ const providers = {
     } catch (error) {
       console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker > Error registering service worker: ', error);
     }
+
     await navigator.serviceWorker.ready;
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker > Service Worker Ready <<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > serviceWorker > SW Ready! <<<<<<<<<<<<<')
+    // registration.active
   } else {
     console.log('>>>>>>>>>>>>>>>>>>>>>>>> CLIENT.JS > !__DEVELOPMENT__ && serviceWorker in navigator NO!! <<<<<<<<<<<<<');
   }

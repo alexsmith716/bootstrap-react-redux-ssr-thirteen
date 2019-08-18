@@ -77,10 +77,6 @@ export default ({ clientStats }) => async (req, res) => {
   console.log('>>>>>>>>>>>>>>>>> SERVER > REQ.originalUrl ++++: ', req.originalUrl);
   console.log('>>>>>>>>>>>>>>>>> SERVER > REQUEST OUT <<<<<<<<<<<<<<<<<<<<<<<');
 
-  if (req.url === '/manifest.json' || req.url === '/Manifest.json') {
-    console.log('>>>>>>>>>>>>>>>>> SERVER > req.url === /manifest.json !!!!!! <<<<<<<<<<<<<<<<<<<<<<<');
-  }
-
   // ----------------------------------
 
   console.log('>>>>>>>>>>>>>>>>>>> SERVER > APP LOADER > SetUpComponent !! START !! <<<<<<<<<<<<<<<<<<<<<<<');

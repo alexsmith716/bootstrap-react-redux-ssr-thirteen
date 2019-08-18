@@ -121,7 +121,6 @@ class App extends Component {
     const { notifs, route } = this.props;
 
     const styles = require('./styles/App.scss');
-    require('./js/app');
 
     // console.log('>>>>>>>>>>>>>>>> APP > render() <<<<<<<<<<<<<< !!STORE!!: ', this.props.store);
 

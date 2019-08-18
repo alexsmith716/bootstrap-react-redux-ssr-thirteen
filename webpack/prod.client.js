@@ -9,8 +9,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 // Extract CSS from chunks into multiple stylesheets + HMR 
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
-// const { GenerateSW } = require('workbox-webpack-plugin');
-const { InjectManifest } = require('workbox-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
+// const { InjectManifest } = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const WebpackPwaManifest = require('webpack-pwa-manifest');
@@ -19,12 +19,10 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const { DuplicatesPlugin } = require('inspectpack/plugin');
 
-// join: absolute | resolve: relative | dirname: blob/dir prefix
 const rootPath = path.resolve(__dirname, '../');
-const buildPath = path.resolve(rootPath, './build'); // ../../build
-const assetPath = path.resolve(rootPath, './build/dist'); // ../../build/dist
+const buildPath = path.resolve(rootPath, './build');
+const assetPath = path.resolve(rootPath, './build/dist');
 
-const publicPath = '/dist/';
 const data = Object.create(null);
 
 const generatedIdent = (name, localName, lr) => {
@@ -78,8 +76,8 @@ module.exports = {
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, '../build/dist'),
-    publicPath
+    path: assetPath,
+    publicPath: '/dist/'
   },
 
   module: {
@@ -284,38 +282,40 @@ module.exports = {
 
   plugins: [
 
-    // new CopyPlugin([
-    //   // { from: path.resolve(buildPath, './manifest.json'), to: assetPath },
-    //   { from: path.resolve(buildPath, './app.js'), to: assetPath },
-    // ]),
+    new CopyPlugin([
+      { from: path.resolve(buildPath, './manifest.json'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-2x.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-3x.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-4x.png'), to: assetPath },
+    ]),
 
-    new WebpackPwaManifest({
-      icons: [
-        {
-          src: path.resolve(buildPath, './launcher-icon-2x.png'),
-          sizes: '96x96',
-          type: 'image/png'
-        },
-        {
-          src: path.resolve(buildPath, './launcher-icon-3x.png'),
-          sizes: '144x144',
-          type: 'image/png'
-        },
-        {
-          src: path.resolve(buildPath, './launcher-icon-4x.png'),
-          sizes: '192x192',
-          type: 'image/png'
-        }
-      ],
-      name: 'Applying thunk middleware for Redux',
-      short_name: 'ElectionApp2019',
-      start_url: '/',
-      display: 'standalone',
-      orientation: 'landscape',
-      theme_color: '#87CEFF',
-      background_color: '#87CEFF',
-      crossorigin: 'use-credentials'
-    }),
+    // new WebpackPwaManifest({
+    //   icons: [
+    //     {
+    //       src: path.resolve(buildPath, './launcher-icon-2x.png'),
+    //       sizes: '96x96',
+    //       type: 'image/png'
+    //     },
+    //     {
+    //       src: path.resolve(buildPath, './launcher-icon-3x.png'),
+    //       sizes: '144x144',
+    //       type: 'image/png'
+    //     },
+    //     {
+    //       src: path.resolve(buildPath, './launcher-icon-4x.png'),
+    //       sizes: '192x192',
+    //       type: 'image/png'
+    //     }
+    //   ],
+    //   name: 'Applying thunk middleware for Redux',
+    //   short_name: 'ElectionApp2019',
+    //   start_url: '/',
+    //   display: 'standalone',
+    //   orientation: 'landscape',
+    //   theme_color: '#87CEFF',
+    //   background_color: '#87CEFF',
+    //   // crossorigin: 'use-credentials'
+    // }),
 
     new WebpackBar({ name: 'Client' }),
     // new WebpackAssetsManifest({ publicPath }),
@@ -392,27 +392,27 @@ module.exports = {
     // globDirectory: base directory to match globPatterns against, relative to the current working directory
     // [maximumFileSizeToCacheInBytes] will not have any effect, it only modifies files matched by 'globPatterns'
 
-    // new GenerateSW({
-    //   swDest: 'service-worker.js',
+    new GenerateSW({
+      cacheId: 'bootstrap-react-redux-ssr-thirteen',
+      swDest: path.join(buildPath, 'service-worker.js'),
 
-    //   clientsClaim: true,
-    //   skipWaiting: true,
+      clientsClaim: true,
+      skipWaiting: false,
 
-    //   importWorkboxFrom: 'local',
-
-    //   directoryIndex: '/dist/',
-    //   navigateFallback: '/dist/index.html'
-    // }),
-
-    new InjectManifest({
-      swSrc: path.resolve(buildPath, './service-worker.js'),
-      swDest: 'service-worker.js',
       importWorkboxFrom: 'local',
-      // globDirectory: './build',
-      // globPatterns: [
-      //   'manifest.*.json',
-      // ],
-      // // exclude: [] // aware: default values may be excluded from precache
-    })
+      navigateFallback: '/dist/index.html'
+    }),
+
+    // new InjectManifest({
+    //   cacheId: 'bootstrap-react-redux-ssr-thirteen',
+    //   swSrc: path.resolve(buildPath, './service-worker.js'),
+    //   swDest: 'service-worker.js',
+    //   importWorkboxFrom: 'local',
+    //   globDirectory: './build',
+    //   globPatterns: [
+    //     'manifest.*.png',
+    //   ],
+    //   // // exclude: [] // aware: default values may be excluded from precache
+    // })
   ],
 };

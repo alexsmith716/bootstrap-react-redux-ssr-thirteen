@@ -1,5 +1,5 @@
 {
-  "name": "Applying thunk middleware for Redux",
+  "name": "Applying async middleware for Redux with Workbox",
   "short_name": "ElectionApp2019",
   "start_url": "/",
   "scope": "/",

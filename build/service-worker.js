@@ -15,7 +15,7 @@ importScripts("/dist/workbox-v4.3.1/workbox-sw.js");
 workbox.setConfig({modulePathPrefix: "/dist/workbox-v4.3.1"});
 
 importScripts(
-  "/dist/precache-manifest.edee96c979d299921388af6af14d17a0.js"
+  "/dist/precache-manifest.e65f6437ad81c0f25d071f3b21cdb75a.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "bootstrap-react-redux-ssr-thirteen"});

@@ -16,6 +16,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 // https://github.com/arthurbergmz/webpack-pwa-manifest
 
+// const OfflinePlugin = require('offline-plugin');
+
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const { DuplicatesPlugin } = require('inspectpack/plugin');
 
@@ -282,6 +284,9 @@ module.exports = {
 
   plugins: [
 
+    new WebpackBar({ name: 'Client' }),
+    // new WebpackAssetsManifest({ publicPath }),
+
     new CopyPlugin([
       { from: path.resolve(buildPath, './manifest.json'), to: assetPath },
       { from: path.resolve(buildPath, './launcher-icon-2x.png'), to: assetPath },
@@ -316,10 +321,6 @@ module.exports = {
     //   background_color: '#87CEFF',
     //   // crossorigin: 'use-credentials'
     // }),
-
-    new WebpackBar({ name: 'Client' }),
-    // new WebpackAssetsManifest({ publicPath }),
-    // new webpack.ProgressPlugin(handler),
 
     new ExtractCssChunks({
       filename: '[name].[contenthash].css',

@@ -209,7 +209,6 @@ const providers = {
   // updateViaCache: "imports"
   // waiting: null
   // __proto__: ServiceWorkerRegistration
-  // { scope: '/dist/' }
 
   if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
     try {

@@ -1,17 +1,14 @@
-$(document).ready(function () {
 
-  // Closes responsive menu when a scroll trigger link is clicked
-  $('.js-scroll-trigger').click(function() {
-    $('.navbar-collapse').collapse('hide');
-  });
+// Closes responsive menu when a scroll trigger link is clicked
+$(document).on('click','.js-scroll-trigger',function(e) {
+  $(".navbar-collapse.show").collapse('hide');
+});
 
-  // Hide navbar when modals trigger
-  $('.app-modal').on('show.bs.modal', function(e) {
-    $('.navbar').addClass('d-none');
-  });
+// Hide navbar when modals trigger
+$(document).on('show.bs.modal','.app-modal',function(e) {
+  $('.navbar').addClass('d-none');
+});
 
-  $('.app-modal').on('hidden.bs.modal', function(e) {
-    $('.navbar').removeClass('d-none');
-  });
-
+$(document).on('hidden.bs.modal','.app-modal',function(e) {
+  $('.navbar').removeClass('d-none');
 });

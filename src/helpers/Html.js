@@ -16,7 +16,7 @@ const Html = ({ assets, store, content }) => {
     <html lang="en-US">
       <head>
 
-        <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
         {helmet.base.toComponent()}
         {helmet.title.toComponent()}
@@ -76,7 +76,6 @@ const Html = ({ assets, store, content }) => {
           && Object.keys(assets.scripts).map(key => (
             <script key={key} src={`${assets.publicPath}/${assets.scripts[key]}`} charSet="UTF-8" />
           ))}
-
 
       </body>
     </html>

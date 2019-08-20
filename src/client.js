@@ -193,23 +193,6 @@ const providers = {
   //   );
   // }
 
-
-  // ServiceWorkerRegistration:
-  // 
-  // {scope: "https://localhost:8080/dist/", updateViaCache: "imports", active: null, installing: ServiceWorker, navigationPreload: NavigationPreloadManager, …}
-  // active: ServiceWorker {scriptURL: "https://localhost:8080/dist/service-worker.js", state: "activated", onerror: null, onstatechange: ƒ}
-  // backgroundFetch: BackgroundFetchManager {}
-  // installing: null
-  // navigationPreload: NavigationPreloadManager {}
-  // onupdatefound: ƒ ()
-  // paymentManager: PaymentManager {instruments: PaymentInstruments, userHint: ""}
-  // pushManager: PushManager {}
-  // scope: "https://localhost:8080/dist/"
-  // sync: SyncManager {}
-  // updateViaCache: "imports"
-  // waiting: null
-  // __proto__: ServiceWorkerRegistration
-
   if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
     try {
       const registration = await navigator.serviceWorker.register('/service-worker.js');

@@ -10,7 +10,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 // Extract CSS from chunks into multiple stylesheets + HMR 
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
-// const { InjectManifest } = require('workbox-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const WebpackPwaManifest = require('webpack-pwa-manifest');
@@ -292,6 +292,7 @@ module.exports = {
       { from: path.resolve(buildPath, './launcher-icon-2x.png'), to: assetPath },
       { from: path.resolve(buildPath, './launcher-icon-3x.png'), to: assetPath },
       { from: path.resolve(buildPath, './launcher-icon-4x.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-5x.png'), to: assetPath },
     ]),
 
     // new WebpackPwaManifest({
@@ -359,7 +360,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      jquery: 'jquery',
+      'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
       Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
       Button: "exports-loader?Button!bootstrap/js/dist/button",
@@ -393,27 +394,39 @@ module.exports = {
     // globDirectory: base directory to match globPatterns against, relative to the current working directory
     // [maximumFileSizeToCacheInBytes] will not have any effect, it only modifies files matched by 'globPatterns'
 
+    // globDirectory: './build',
+    // globPatterns: [
+    //   'manifest.*.png',
+    // ],
+
     new GenerateSW({
-      cacheId: 'bootstrap-react-redux-ssr-thirteen',
       swDest: path.join(buildPath, 'service-worker.js'),
-
       clientsClaim: true,
-      skipWaiting: false,
-
+      skipWaiting: true,
       importWorkboxFrom: 'local',
       navigateFallback: '/dist/index.html'
+      // runtimeCaching: [{
+      //   urlPattern: new RegExp('https://localhost:8080/'),
+      //   // urlPattern: /dist/,
+      //   // for assets that have been revisioned, such as URLs like /styles/example.a8f5f1.css
+      //   handler: 'CacheFirst',
+      //   // to take advantage of any Workbox plugins
+      //   handler: 'CacheOnly',
+      // }]
     }),
 
     // new InjectManifest({
-    //   cacheId: 'bootstrap-react-redux-ssr-thirteen',
-    //   swSrc: path.resolve(buildPath, './service-worker.js'),
+    //     swSrc: path.resolve(buildPath, './src-service-worker.js'),
+    //     swDest: 'service-worker.js',
+    //     globDirectory: 'build/',
+    //     globPatterns: ['server/server.js', 'manifest.json', '/'],
+    //     importsDirectory: 'dist',
+    // }),
+
+    // new InjectManifest({
+    //   swSrc: path.resolve(buildPath, './service-workerA.js'),
     //   swDest: 'service-worker.js',
     //   importWorkboxFrom: 'local',
-    //   globDirectory: './build',
-    //   globPatterns: [
-    //     'manifest.*.png',
-    //   ],
-    //   // // exclude: [] // aware: default values may be excluded from precache
     // })
   ],
 };

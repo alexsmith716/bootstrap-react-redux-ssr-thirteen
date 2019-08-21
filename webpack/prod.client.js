@@ -393,18 +393,43 @@ module.exports = {
     // =============================================================
     // globDirectory: base directory to match globPatterns against, relative to the current working directory
     // [maximumFileSizeToCacheInBytes] will not have any effect, it only modifies files matched by 'globPatterns'
+    // 'Update on reload' automatically reload SW when a new one is available
 
-    // globDirectory: './build',
-    // globPatterns: [
-    //   'manifest.*.png',
-    // ],
+    // https://developers.google.com/web/tools/workbox/guides/precache-files/webpack
+    // tell Workbox to precache the files by adding the following code to your service worker:
+    // This will precache any of the files from the Webpack plugin
+    // workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
+
+    // https://developers.google.com/web/tools/workbox/modules/workbox-precaching
+    // Serving Precached Responses:
+    // Calling workbox.precaching.precacheAndRoute() or 
+    //  workbox.precaching.addRoute() will create a route that matches requests for precached URLs
+
+    // The response strategy used in this route is cache-first: 
+    //  the precached response will be used, unless that cached response is not present 
+    //  (due to some unexpected error), in which case a network response will be used instead
+
+    // https://developers.google.com/web/tools/workbox/modules/workbox-routing#how_to_register_a_navigation_route
+    // How to Register a Navigation Route:
+    // for a SPA, use a 'NavigationRoute' to return a specific response for all navigation requests
+    // 'NavigationRoute':
+    //    https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox.routing.NavigationRoute
+    // navigation requests: 
+    //    https://developers.google.com/web/fundamentals/primers/service-workers/high-performance-loading#first_what_are_navigation_requests
+
+    // navigateFallback:
+    //    meant to be used in a SPA scenario, in which all navigations use a common App Shell HTML
 
     new GenerateSW({
       swDest: path.join(buildPath, 'service-worker.js'),
       clientsClaim: true,
       skipWaiting: true,
       importWorkboxFrom: 'local',
-      navigateFallback: '/dist/index.html'
+      navigateFallback: '/dist/index.html',
+      // Exempt all URLs that start with /_ or contain admin anywhere:
+      // navigateFallbackBlacklist: [/^\/_/, /admin/],
+      // Include URLs that start with /pages:
+      // navigateFallbackWhitelist: [/^\/pages/],
       // runtimeCaching: [{
       //   urlPattern: new RegExp('https://localhost:8080/'),
       //   // urlPattern: /dist/,

@@ -5,10 +5,10 @@ $(document).on('click','.js-scroll-trigger',function(e) {
 });
 
 // Hide navbar when modals trigger
-$(document).on('show.bs.modal','.app-modal',function(e) {
+$(document).on('show.bs.modal','.app-modal',function() {
   $('.navbar').addClass('d-none');
 });
 
-$(document).on('hidden.bs.modal','.app-modal',function(e) {
+$(document).on('hidden.bs.modal','.app-modal',function() {
   $('.navbar').removeClass('d-none');
 });

@@ -24,6 +24,8 @@ import config from '../config/config';
 import apiClient from './helpers/apiClient';
 // import { createApp } from './app';
 
+import manifest from './manifest';
+
 console.log('>>>>>>>>>>>>>>>>> SERVER > ES > CONFIG >>>>>>>>>>>>>>>>>>>>>>>>: ', config);
 
 // ------------------------------------------------------------------------------------------------------
@@ -201,6 +203,8 @@ export default ({ clientStats }) => async (req, res) => {
     // ===============================================================================
     // ===============================================================================
 
+    const status = context.status || 200;
+
     // console.log('>>>>>>>>>>>>>>>>> SERVER > REQ.url ++++++++++++++++++: ', req.url);
 
     // It offers 2 functions flushChunks and flushFiles, which you call immediately after ReactDOMServer.renderToString. 
@@ -222,6 +226,14 @@ export default ({ clientStats }) => async (req, res) => {
     if (context.url) {
       return res.redirect(301, context.url);
     }
+
+    // if (req.url == '/manifest.json' || req.url == '/Manifest.json') {
+    //   console.log('>>>>>>>>>>>>>>>>>>> SERVER > APP LOADER > MANIFEST.JS <<<<<<<<<<<<<<<<<<<<<<<');
+    //   return res
+    //     .header('Content-Type', 'application/manifest+json')
+    //     .status(200)
+    //     .send(manifest);
+    // }
 
     // ------------------------------------------------------------------------------------------------------
 

@@ -48,6 +48,12 @@ class AboutTwo extends Component {
   //   console.log('>>>>>>>>>>>>>>>> AboutTwo > getDerivedStateFromProps() <<<<<<<<<<<<<<<<<<<<<<');
   // };
 
+  // LineChart: need to handle data requests for SW >> Cannot read property 'message' of undefined
+  // 
+  // invoked after an error has been thrown by a descendant component
+  // receives two parameters:
+  // 1) error - The error that was thrown
+  // 2) info - object   a componentStack key containing information about which component threw the error
   componentDidCatch(error, info) {
     // Example "componentStack":
     //   in ComponentThatThrows (created by App)

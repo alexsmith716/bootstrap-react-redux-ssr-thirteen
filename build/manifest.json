@@ -1,7 +1,8 @@
 {
-  "name": "Applying async middleware for Redux with Workbox",
+  "name": "ElectionApp2019",
   "short_name": "ElectionApp2019",
-  "start_url": "/",
+  "description": "Applying async middleware for Redux with Workbox.",
+  "start_url": ".",
   "scope": "/",
   "display": "standalone",
   "orientation": "landscape",

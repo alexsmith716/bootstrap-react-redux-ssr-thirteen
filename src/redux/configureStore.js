@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 // persisted state saved to redux / persisted state retrieved from redux
  import { createPersistoid, persistCombineReducers, REGISTER } from 'redux-persist';
 import clientMiddleware from './clientMiddleware';
-import createRootReducer from './reducers';
+import createRootReducer from './reducer';
 
 // 'reduceRight()' works just like 'reduce()', 
 // except that it processes the array from highest index to lowest (right-to-left), 

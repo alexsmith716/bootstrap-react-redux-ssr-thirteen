@@ -2,7 +2,7 @@ ssl/
 node_modules/
 log/
 logs/
-json-data/
+data/
 
 yarn-debug.log
 yarn-error.log
@@ -13,9 +13,9 @@ dist/
 build/analyzers/
 build/assets/
 build/dist/
-build/assets/
 build/server/
 build/dlls/
+build/json-data/
 webpack/dlls/
 coverage/
 api/**/*.nedb

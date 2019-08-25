@@ -49,6 +49,7 @@ class AboutTwo extends Component {
   // invoked after an error has been thrown by a descendant component
   // receives the error thrown as param and returns a value to update state
   static getDerivedStateFromError(error) {
+    console.log('>>>>>>>>>>>>>>>> AboutTwo > getDerivedStateFromError() > error: ', error);
     // Update state so the next render will show the fallback UI.
     // return { hasError: true };
     return;

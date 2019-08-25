@@ -9,8 +9,12 @@ import FilterableTable from '../../components/FilterableTable/FilterableTable';
 import TemperatureCalculator from '../../components/widgets/LiftingStateUp/TemperatureCalculator';
 import CounterPreloadedState from '../../components/widgets/Counter/CounterPreloadedState';
 import CounterMultireducer from '../../components/widgets/Counter/CounterMultireducer';
-
 // import { withStore } from '../../../hoc';
+import { connect } from 'react-redux';
+
+@connect(state => ({
+  online: state.online
+}))
 
 // --------------------------------------------------------------------------
 
@@ -18,25 +22,42 @@ import CounterMultireducer from '../../components/widgets/Counter/CounterMultire
 
 class AboutOne extends Component {
 
-  // constructor(props) {
-  //   super(props);
+  static propTypes = {
+    online: PropTypes.bool.isRequired
+  };
 
-  // static propTypes = {};
-  // static defaultProps = {};
-
-  // state = {};
-
+  // called after the first render
   componentDidMount() {
-    console.log('>>>>>>>>>>>>>>>> AboutOne > componentDidMount() <<<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>> AboutOne > componentDidMount() <<<<<<<<<<<<<<<<<<<<<<');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('>>>>>>>>>>>>>>>> AboutOne > componentDidUpdate() <<<<<<<<<<<<<<<<<<<<<<');
   }
 
   componentWillUnmount() {
     console.log('>>>>>>>>>>>>>>>> AboutOne > componentWillUnmount() <<<<<<<<<<<<<<');
   }
 
-  // static contextTypes = {
-  //   store: PropTypes.objectOf(PropTypes.any).isRequired
-  // };
+  // invoked before rendering when new props or state are being received
+  // --------------------------------------------------------------------------------
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('>>>>>>>>>>>>>>>> AboutOne > shouldComponentUpdate() > nextProps: ', nextProps);
+    return nextProps;
+  };
+
+  // ERROR HANDLING (error during render, in a lifecycle, in the constructor of any child component)
+  // ----------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------------
+
+  static getDerivedStateFromError(error) {
+    console.log('>>>>>>>>>>>>>>>> AboutOne > getDerivedStateFromError() > error: ', error);
+    return;
+  }
+
+  componentDidCatch(error, info) {
+    console.log('>>>>>>>>>>>>>>>> AboutOne > componentDidCatch() > info.componentStack: ', info.componentStack);
+  }
 
   render() {
 

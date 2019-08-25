@@ -288,6 +288,7 @@ module.exports = {
     // new WebpackAssetsManifest({ publicPath }),
 
     new CopyPlugin([
+      { from: path.resolve(buildPath, './favicon.ico'), to: assetPath },
       { from: path.resolve(buildPath, './manifest.json'), to: assetPath },
       { from: path.resolve(buildPath, './launcher-icon-2x.png'), to: assetPath },
       { from: path.resolve(buildPath, './launcher-icon-3x.png'), to: assetPath },
@@ -420,6 +421,12 @@ module.exports = {
     // navigateFallback:
     //    meant to be used in a SPA scenario, in which all navigations use a common App Shell HTML
 
+    // https://developers.google.com/web/tools/workbox/reference-docs/latest/
+    //handler: 'CacheFirst'
+    //handler: 'CacheOnly'
+    //handler: 'NetworkFirst',
+    //handler: 'NetworkOnly'
+
     new GenerateSW({
       swDest: path.join(buildPath, 'service-worker.js'),
       clientsClaim: true,
@@ -430,15 +437,83 @@ module.exports = {
       // navigateFallbackBlacklist: [/^\/_/, /admin/],
       // Include URLs that start with /pages:
       // navigateFallbackWhitelist: [/^\/pages/],
-      // runtimeCaching: [{
-      //   urlPattern: new RegExp('https://localhost:8080/'),
-      //   // urlPattern: /dist/,
-      //   // for assets that have been revisioned, such as URLs like /styles/example.a8f5f1.css
-      //   handler: 'CacheFirst',
-      //   // to take advantage of any Workbox plugins
-      //   handler: 'CacheOnly',
-      // }]
+      // Do not precache images
+      // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+      runtimeCaching: [
+        {
+          urlPattern: /favicon\.ico/,
+          handler: 'CacheFirst',
+        },
+        {
+          urlPattern: /manifest\.json/,
+          handler: 'CacheFirst',
+        },
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+          handler: 'CacheFirst',
+        },
+        // {
+        //   // To match cross-origin requests, use a RegExp that matches
+        //   // the start of the origin:
+        //   urlPattern: new RegExp('^https://api\.github\.com/'),
+        //   handler: 'NetworkFirst',
+        //   // handler: 'StaleWhileRevalidate',
+        //   // options: {
+        //   //   cacheableResponse: {
+        //   //     statuses: [0, 200]
+        //   //   }
+        //   // }
+        // },
+        // {
+        //   // Match any same-origin request that contains 'api'.
+        //   urlPattern: /api/,
+        //   // Apply a network-first strategy.
+        //   handler: 'NetworkFirst',
+        //   options: {
+        //     // Fall back to the cache after 10 seconds.
+        //     networkTimeoutSeconds: 10,
+        //     // Use a custom cache name for this route.
+        //     cacheName: 'my-api-cache',
+        //     // Configure custom cache expiration.
+        //     expiration: {
+        //       maxEntries: 5,
+        //       maxAgeSeconds: 60,
+        //     },
+        //     // Configure background sync.
+        //     backgroundSync: {
+        //       name: 'my-queue-name',
+        //       options: {
+        //         maxRetentionTime: 60 * 60,
+        //       },
+        //     },
+        //     // Configure which responses are considered cacheable.
+        //     cacheableResponse: {
+        //       statuses: [0, 200],
+        //       headers: {'x-test': 'true'},
+        //     },
+        //     // Configure the broadcast cache update plugin.
+        //     broadcastUpdate: {
+        //       channelName: 'my-update-channel',
+        //     },
+        //     // Add in any additional plugin logic you need.
+        //     plugins: [
+        //       {cacheDidUpdate: () => /* custom plugin code */}
+        //     ],
+        //     // matchOptions and fetchOptions are used to configure the handler.
+        //     fetchOptions: {
+        //       mode: 'no-cors',
+        //     },
+        //     matchOptions: {
+        //       ignoreSearch: true,
+        //     },
+        //   },
+        // },
+      ],
     }),
+
+    // https://github.com/GoogleChrome/workbox/issues/708
+    // The InjectManifest plugin is intended for developers who want to "own" their service worker's behavior, 
+    //  but still want the precache manifest generation/integration
 
     // new InjectManifest({
     //     swSrc: path.resolve(buildPath, './src-service-worker.js'),

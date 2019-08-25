@@ -1,21 +1,50 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-// import { provideHooks } from 'redial';
-// import MiniInfoBar from 'components/MiniInfoBar/MiniInfoBar';
-// import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
+import { connect } from 'react-redux';
+
+@connect(state => ({
+  online: state.online
+}))
 
 class AboutFour extends Component {
 
-  UNSAFE_componentWillMount() {
-    console.log('>>>>>>>>>>>>>>>> HOME > UNSAFE_componentWillMount() <<<<<<<<<<<<<<');
+  static propTypes = {
+    online: PropTypes.bool.isRequired
+  };
+
+  // called after the first render
+  componentDidMount() {
+    console.log('>>>>>>>>>>>>>>>> AboutFour > componentDidMount() <<<<<<<<<<<<<<<<<<<<<<');
   }
 
-  componentDidMount() {
-    console.log('>>>>>>>>>>>>>>>> HOME > componentDidMount() <<<<<<<<<<<<<<');
+  componentDidUpdate(prevProps, prevState) {
+    console.log('>>>>>>>>>>>>>>>> AboutFour > componentDidUpdate() <<<<<<<<<<<<<<<<<<<<<<');
   }
 
   componentWillUnmount() {
-    console.log('>>>>>>>>>>>>>>>> HOME > componentWillUnmount() <<<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>> AboutFour > componentWillUnmount() <<<<<<<<<<<<<<');
+  }
+
+  // invoked before rendering when new props or state are being received
+  // --------------------------------------------------------------------------------
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('>>>>>>>>>>>>>>>> AboutFour > shouldComponentUpdate() > nextProps: ', nextProps);
+    return nextProps;
+  };
+
+  // ERROR HANDLING (error during render, in a lifecycle, in the constructor of any child component)
+  // ----------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------------
+
+  static getDerivedStateFromError(error) {
+    console.log('>>>>>>>>>>>>>>>> AboutFour > getDerivedStateFromError() > error: ', error);
+    // Update state so the next render will show the fallback UI.
+    // return { hasError: true };
+    return;
+  }
+
+  componentDidCatch(error, info) {
+    console.log('>>>>>>>>>>>>>>>> AboutFour > componentDidCatch() > info.componentStack: ', info.componentStack);
   }
 
   render() {

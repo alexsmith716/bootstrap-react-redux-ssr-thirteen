@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-
 import CounterPreloadedState from '../../components/widgets/Counter/CounterPreloadedState';
 import CounterMultireducer from '../../components/widgets/Counter/CounterMultireducer';
 // import Planets from '../../components/d3/Planets/Planets';
@@ -9,18 +8,19 @@ import LineChart from '../../components/d3/LineChart/LineChart';
 // import LineChartA from '../../components/d3/LineChart/LineChartA';
 // import LineChartB from '../../components/d3/LineChart/LineChartB';
 import TemperatureCalculator from '../../components/widgets/LiftingStateUp/TemperatureCalculator';
+import { connect } from 'react-redux';
+
+@connect(state => ({
+  online: state.online
+}))
 
 // --------------------------------------------------------------------------
 
 class AboutTwo extends Component {
 
-  // constructor(props) {
-  //   super(props);
-
-  // static propTypes = {};
-  // static defaultProps = {};
-
-  // state = {};
+  static propTypes = {
+    online: PropTypes.bool.isRequired
+  };
 
   // called after the first render
   componentDidMount() {
@@ -42,13 +42,27 @@ class AboutTwo extends Component {
     return nextProps;
   };
 
-  // invoked right before calling the render method, both on the initial mount and on subsequent updates
-  // --------------------------------------------------------------------------------
-  // static getDerivedStateFromProps(props, state) {
-  //   console.log('>>>>>>>>>>>>>>>> AboutTwo > getDerivedStateFromProps() <<<<<<<<<<<<<<<<<<<<<<');
-  // };
+  // ERROR HANDLING (error during render, in a lifecycle, in the constructor of any child component)
+  // ----------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------------
+
+  // invoked after an error has been thrown by a descendant component
+  // receives the error thrown as param and returns a value to update state
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    // return { hasError: true };
+    return;
+  }
 
   // LineChart: need to handle data requests for SW >> Cannot read property 'message' of undefined
+
+  // Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, 
+  //    log those errors, and display a fallback UI instead of the component tree that crashed. 
+  // Error boundaries catch errors during rendering, in lifecycle methods, 
+  //    and in constructors of the whole tree below them
+
+  // called with any uncaught error that bubbles up from the component's children's lifecycle methods, constructors, render methods
+  // when triggered can't render 'this.props.children' && must replace it with some sort of fallback UI
   // 
   // invoked after an error has been thrown by a descendant component
   // receives two parameters:
@@ -66,9 +80,12 @@ class AboutTwo extends Component {
 
   render() {
 
+    const { online } = this.props;
     const aboutImageMain = require('../../theme/images/about-750-450.png');
     const aboutImageOurCustomers = require('../../theme/images/about-500-300.png');
     const styles = require('./scss/AboutTwo.scss');
+
+    console.log('>>>>>>>>>>>>>>>> AboutTwo > render() > ONLINE?????????: ', online);
 
     return (
 
@@ -104,7 +121,7 @@ class AboutTwo extends Component {
 
                     <LineChart 
                       as='AboutTwoMultireducerLineChart1' 
-                      request={'/json-data/LineChartA.json'}
+                      request={'/json-data/lineChartA.json'}
                       title='D3 LineChart 1' 
                     />
 

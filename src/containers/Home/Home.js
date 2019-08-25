@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
-
-@connect(
-  state => ({ online: state.online })
-)
+@connect(state => ({
+  online: state.online
+}))
 
 class Home extends Component {
 
@@ -31,7 +30,7 @@ class Home extends Component {
     const { online } = this.props;
     const styles = require('./scss/Home.scss');
 
-    console.log('>>>>>>>>>>>>>>>> HOME > render() > online:', online);
+    console.log('>>>>>>>>>>>>>>>> HOME > render() > ONLINE???: ', online);
 
     return (
 

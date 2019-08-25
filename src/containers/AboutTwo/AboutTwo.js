@@ -85,7 +85,7 @@ class AboutTwo extends Component {
     const aboutImageOurCustomers = require('../../theme/images/about-500-300.png');
     const styles = require('./scss/AboutTwo.scss');
 
-    console.log('>>>>>>>>>>>>>>>> AboutTwo > render() > ONLINE?????????: ', online);
+    console.log('>>>>>>>>>>>>>>>> AboutTwo > render() > ONLINE???: ', online);
 
     return (
 
@@ -119,16 +119,22 @@ class AboutTwo extends Component {
 
                   <div className="card-body-content">
 
-                    <LineChart 
-                      as='AboutTwoMultireducerLineChart1' 
-                      request={'/json-data/lineChartA.json'}
-                      title='D3 LineChart 1' 
-                    />
+                    {online && (
+                      <LineChart 
+                        as='AboutTwoMultireducerLineChart1' 
+                        request={'/json-data/lineChartA.json'}
+                        title='D3 LineChart 1' 
+                      />
+                    )}
+
+                    {!online && (
+                      <div className="alert alert-danger fade show" role="alert">
+                        <div className="text-center">NETWORK ERROR</div>
+                      </div>
+                    )}
 
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -156,16 +162,22 @@ class AboutTwo extends Component {
 
                   <div className="card-body-content">
 
-                    <LineChart 
-                      as='AboutTwoMultireducerLineChart2' 
-                      request={'/json-data/lineChartB.json'}
-                      title='D3 LineChart 2' 
-                    />
+                    {online && (
+                      <LineChart 
+                        as='AboutTwoMultireducerLineChart2' 
+                        request={'/json-data/lineChartB.json'}
+                        title='D3 LineChart 2' 
+                      />
+                    )}
+
+                    {!online && (
+                      <div className="alert alert-danger fade show" role="alert">
+                        <div className="text-center">NETWORK ERROR</div>
+                      </div>
+                    )}
 
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -196,9 +208,7 @@ class AboutTwo extends Component {
                     <TemperatureCalculator as="AboutTwo1" />
 
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -229,9 +239,7 @@ class AboutTwo extends Component {
                     <TemperatureCalculator as="AboutTwo2" />
 
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -262,9 +270,7 @@ class AboutTwo extends Component {
                     <CounterPreloadedState />
 
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -295,9 +301,7 @@ class AboutTwo extends Component {
                     <CounterMultireducer as="AboutTwoMultireducer1" />
 
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -328,9 +332,7 @@ class AboutTwo extends Component {
                     <CounterMultireducer as="AboutTwoMultireducer2" />
 
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -361,9 +363,7 @@ class AboutTwo extends Component {
                     <CounterMultireducer as="AboutTwoMultireducer3" />
 
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>

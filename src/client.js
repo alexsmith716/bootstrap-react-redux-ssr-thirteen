@@ -75,7 +75,7 @@ const providers = {
 
   const online = window.__data ? true : await isOnline();
 
-  console.log('>>>>>>>>>>>>>>>>>>> CLIENT.JS > ONLINE?????????: ', online);
+  console.log('>>>>>>>>>>>>>>>>>>> CLIENT.JS > ONLINE???: ', online);
 
   const history = createBrowserHistory();
 

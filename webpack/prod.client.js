@@ -426,6 +426,7 @@ module.exports = {
     //handler: 'CacheOnly'
     //handler: 'NetworkFirst',
     //handler: 'NetworkOnly'
+    // /json-data/
 
     new GenerateSW({
       swDest: path.join(buildPath, 'service-worker.js'),
@@ -451,6 +452,15 @@ module.exports = {
         {
           urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
           handler: 'CacheFirst',
+        },
+        {
+          urlPattern: /json-data/,
+          handler: 'NetworkFirst',
+          options: {
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
         },
         // {
         //   // To match cross-origin requests, use a RegExp that matches

@@ -120,19 +120,11 @@ class AboutTwo extends Component {
 
                   <div className="card-body-content">
 
-                    {online && (
-                      <LineChart 
-                        as='AboutTwoMultireducerLineChart1' 
-                        request={'/json-data/lineChartA.json'}
-                        title='D3 LineChart 1' 
-                      />
-                    )}
-
-                    {!online && (
-                      <div className="alert alert-danger fade show" role="alert">
-                        <div className="text-center">NETWORK ERROR</div>
-                      </div>
-                    )}
+                    <LineChart 
+                      as='AboutTwoMultireducerLineChart1' 
+                      request={'/json-data/lineChartA.json'}
+                      title='D3 LineChart 1' 
+                    />
 
                   </div>
                 </div>
@@ -163,19 +155,11 @@ class AboutTwo extends Component {
 
                   <div className="card-body-content">
 
-                    {online && (
-                      <LineChart 
-                        as='AboutTwoMultireducerLineChart2' 
-                        request={'/json-data/lineChartB.json'}
-                        title='D3 LineChart 2' 
-                      />
-                    )}
-
-                    {!online && (
-                      <div className="alert alert-danger fade show" role="alert">
-                        <div className="text-center">NETWORK ERROR</div>
-                      </div>
-                    )}
+                    <LineChart 
+                      as='AboutTwoMultireducerLineChart2' 
+                      request={'/json-data/lineChartB.json'}
+                      title='D3 LineChart 2' 
+                    />
 
                   </div>
                 </div>

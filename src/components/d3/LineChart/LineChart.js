@@ -11,6 +11,7 @@ import drawVisualization from "../../../d3/drawLineChartBasic";
 
 @connect(
   (state, { as }) => ({
+    online: state.online,
     loading: state.lineChartCollection[as].loading,
     loaded: state.lineChartCollection[as].loaded,
     data: state.lineChartCollection[as].data,
@@ -219,6 +220,9 @@ class LineChart extends Component {
     // const styles = require('./scss/LineChart.scss');
     const { loading, loaded, title, data, error, errorResponse } = this.props;
     const { containerRef, inputXValueRef, inputYValueRef } = this;
+    const { online } = this.props;
+
+    console.log('>>>>>>>>>>>>>>>> LineChart > render() > ONLINE???: ', online);
 
     console.log('>>>>>>>>>>>>>>>> LineChart > render() <<<<<<<<<<<<<<<<< data: ', {data});
     console.log('>>>>>>>>>>>>>>>> LineChart > render() <<<<<<<<<<<<<<<<< error: ', {error});
@@ -236,12 +240,19 @@ class LineChart extends Component {
 
               <p>{title}</p>
 
+              {/* (>>>>>>>>>>>>>>>>>>>>>> ONLINE >>>>>>>>>>>>>>>>>>>>>>>>) */}
+
+              {!online &&
+                !loaded && (
+                  <div className="alert alert-danger fade show" role="alert">
+                    <div className="text-center">NETWORK ERROR</div>
+                  </div>
+              )}
+
               {/* (>>>>>>>>>>>>>>>>>>>>>> LOADING >>>>>>>>>>>>>>>>>>>>>>>>) */}
 
               {loading && (
-
                   <Loading text="Loading" />
-
                 )}
 
               {/* (>>>>>>>>>>>>>>>>>>>>>> ERROR >>>>>>>>>>>>>>>>>>>>>>>>) */}

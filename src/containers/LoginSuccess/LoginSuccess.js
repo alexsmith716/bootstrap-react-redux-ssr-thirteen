@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
 import * as authActions from '../../redux/modules/auth';
 
@@ -23,6 +24,9 @@ class LoginSuccess extends Component {
 
       user && (
         <div className="container">
+
+          <Helmet title="Login Success" />
+
           <h1>Login Success</h1>
 
           <div>

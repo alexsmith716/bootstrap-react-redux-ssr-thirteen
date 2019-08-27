@@ -46,11 +46,11 @@ const DropdownSelect = props => {
   );
 };
 
-DropdownSelect.propTypes = {
-  title: PropTypes.string,
-  optionsArray: PropTypes.array.isRequired,
-  dropDownOptionSelected: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
-};
+// DropdownSelect.propTypes = {
+//   title: PropTypes.string,
+//   optionsArray: PropTypes.array.isRequired,
+//   dropDownOptionSelected: PropTypes.string.isRequired,
+//   onChange: PropTypes.func.isRequired
+// };
 
 export default DropdownSelect;

@@ -43,12 +43,12 @@ const Input = ({input, label, type, meta: { touched, error, submitError }, ...re
 
 );
 
-Input.propTypes = {
-  input: PropTypes.objectOf(PropTypes.any),
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  meta: PropTypes.objectOf(PropTypes.any)
-};
+// Input.propTypes = {
+//   input: PropTypes.objectOf(PropTypes.any),
+//   label: PropTypes.string.isRequired,
+//   type: PropTypes.string.isRequired,
+//   meta: PropTypes.objectOf(PropTypes.any)
+// };
 
 
 const LoginForm = ({ onSubmit }) => (

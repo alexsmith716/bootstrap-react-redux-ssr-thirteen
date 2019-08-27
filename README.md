@@ -7,6 +7,25 @@ App builds off 'bootstrap-react-redux-webpack-ssr-twelve'. This app utilizes cus
 =============================================================
 =============================================================
 
+FIX ME | TO DO'S:
+
+// 1 ---------------
+
+Warning: `LineChart` uses `getDerivedStateFromProps` but its initial state is undefined. This is not recommended. Instead, define the initial state by assigning an object to `this.state` in the constructor of `LineChart`. This ensures that `getDerivedStateFromProps` arguments have a consistent shape.
+
+// 2 ---------------
+
+Warning: `FilterableTable` uses `getDerivedStateFromProps` but its initial state is undefined. This is not recommended. Instead, define the initial state by assigning an object to `this.state` in the constructor of `FilterableTable`. This ensures that `getDerivedStateFromProps` arguments have a consistent shape.
+
+// ---------------
+
+(have to go over all lifecycle stuff again)
+
+(have to go over all type checking / Prop-Types stuff again)
+
+=============================================================
+=============================================================
+
 https://github.com/GoogleChrome/lighthouse
 
 https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle

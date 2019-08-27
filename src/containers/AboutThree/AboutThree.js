@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
 
 @connect(state => ({
@@ -56,6 +57,8 @@ class AboutThree extends Component {
     return (
 
       <div className="container">
+
+        <Helmet title="About Three" />
 
         <h1 className={`mt-4 mb-3 ${styles.uniqueColor}`}>About Three</h1>
 

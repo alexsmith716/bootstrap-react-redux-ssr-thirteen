@@ -77,8 +77,6 @@ app.use(bodyParser.json());
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'build', 'favicon.ico')));
 
-app.use(express.static(path.join(__dirname, '..', 'build')));
-
 // ---------------------------------------------------------------------
 
 // const targetUrl = `http://${config.apiHost}:${config.apiPort}`;
@@ -102,20 +100,6 @@ app.use((req, res, next) => {
   // console.log('>>>>>>>>>>>>>>>>> START > REQ.params +++++++++: ', req.params);
   console.log('>>>>>>>>>>>>>>>>> START > REQ.originalUrl ++++: ', req.originalUrl);
   console.log('>>>>>>>>>>>>>>>>> START > REQUEST OUT <<<<<<<<<<<<<<<<<<<<<<<');
-  next();
-});
-
-// app.use('/manifest.json', (req, res, next) => {
-//   console.log('>>>>>>>>>>>>>>>>> START > app.use > /manifest.json <<<<<<<<<<<<<<<<<<<<<<<');
-//   res.sendFile(path.join(__dirname, '..', 'build', 'manifest.json'));
-//   console.log('>>>>>>>>>>>>>>>> START ???? > manifest.json <<<<<<<<<<<<<<<<');
-//   next();
-// });
-
-app.use('/dist/service-worker.js', (req, res, next) => {
-  console.log('>>>>>>>>>>>>>>>>> START > app.use > service-worker <<<<<<<<<<<<<<<<<<<<<<<');
-  res.setHeader('Service-Worker-Allowed', '/');
-  res.setHeader('Cache-Control', 'no-store');
   next();
 });
 
@@ -227,6 +211,8 @@ const done = function () {
 if (portNum) {
   console.log('>>>>>>>> BIN > START > __DEVELOPMENT__ ?: ', __DEVELOPMENT__);
   console.log('>>>>>>>> BIN > START > STATS COMPILER ATTEMPTING BUILD ! PLEASE WAIT ! ...');
+
+  app.use(express.static(path.join(__dirname, '..', 'build')));
 
   if (__DEVELOPMENT__) {
     const clientConfigDev = require('../webpack/dev.client');

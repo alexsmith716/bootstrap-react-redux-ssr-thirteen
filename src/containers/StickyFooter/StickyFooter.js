@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
+import PropTypes from 'prop-types';
 
 class StickyFooter extends Component {
 
@@ -18,6 +19,8 @@ class StickyFooter extends Component {
     return (
 
       <div className="container">
+
+        <Helmet title="Sticky Footer" />
 
         <h1 className={styles.uniqueColor}>Sticky Footer Test!</h1>
 

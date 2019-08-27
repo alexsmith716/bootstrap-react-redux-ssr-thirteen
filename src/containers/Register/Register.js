@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 
@@ -15,9 +15,9 @@ class Register extends Component {
 
       <div className="container">
 
-        <div className={styles.registerContainer}>
+        <Helmet title="Join Election App" />
 
-          <Helmet title="Join Election App" />
+        <div className={styles.registerContainer}>
 
           <div className="d-flex justify-content-center">
 

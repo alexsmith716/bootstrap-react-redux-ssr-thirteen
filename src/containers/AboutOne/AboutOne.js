@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import CatsForm from '../../components/widgets/CatsForm/CatsForm';
 import Clock from '../../components/widgets/Clock/Clock';

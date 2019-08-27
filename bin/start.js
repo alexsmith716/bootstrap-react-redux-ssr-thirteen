@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const morgan = require('morgan');
 // const http = require('http');
 // const httpProxy = require('http-proxy');
@@ -71,6 +72,8 @@ app.use(morgan('dev'));
 // app.use(headers);
 
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'build', 'favicon.ico')));
 
@@ -102,12 +105,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/manifest.json', (req, res, next) => {
-  console.log('>>>>>>>>>>>>>>>>> START > app.use > /manifest.json <<<<<<<<<<<<<<<<<<<<<<<');
-  res.sendFile(path.join(__dirname, '..', 'build', 'manifest.json'));
-  console.log('>>>>>>>>>>>>>>>> START ???? > manifest.json <<<<<<<<<<<<<<<<');
-  next();
-});
+// app.use('/manifest.json', (req, res, next) => {
+//   console.log('>>>>>>>>>>>>>>>>> START > app.use > /manifest.json <<<<<<<<<<<<<<<<<<<<<<<');
+//   res.sendFile(path.join(__dirname, '..', 'build', 'manifest.json'));
+//   console.log('>>>>>>>>>>>>>>>> START ???? > manifest.json <<<<<<<<<<<<<<<<');
+//   next();
+// });
 
 app.use('/dist/service-worker.js', (req, res, next) => {
   console.log('>>>>>>>>>>>>>>>>> START > app.use > service-worker <<<<<<<<<<<<<<<<<<<<<<<');

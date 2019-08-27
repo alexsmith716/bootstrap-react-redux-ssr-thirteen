@@ -10,7 +10,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 // Extract CSS from chunks into multiple stylesheets + HMR 
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
-const { InjectManifest } = require('workbox-webpack-plugin');
+// const { InjectManifest } = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const WebpackPwaManifest = require('webpack-pwa-manifest');
@@ -348,7 +348,19 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/pwa.js'
+      template: 'src/pwa.js',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
 
     // https://webpack.js.org/plugins/provide-plugin/
@@ -422,11 +434,10 @@ module.exports = {
     //    meant to be used in a SPA scenario, in which all navigations use a common App Shell HTML
 
     // https://developers.google.com/web/tools/workbox/reference-docs/latest/
-    //handler: 'CacheFirst'
-    //handler: 'CacheOnly'
-    //handler: 'NetworkFirst',
-    //handler: 'NetworkOnly'
-    // /json-data/
+    // handler: 'CacheFirst'
+    // handler: 'CacheOnly'
+    // handler: 'NetworkFirst'
+    // handler: 'NetworkOnly'
 
     new GenerateSW({
       swDest: path.join(buildPath, 'service-worker.js'),
@@ -434,11 +445,11 @@ module.exports = {
       skipWaiting: true,
       importWorkboxFrom: 'local',
       navigateFallback: '/dist/index.html',
-      // Exempt all URLs that start with /_ or contain admin anywhere:
+      // // Exempt all URLs that start with /_ or contain admin anywhere:
       // navigateFallbackBlacklist: [/^\/_/, /admin/],
-      // Include URLs that start with /pages:
+      // // Include URLs that start with /pages:
       // navigateFallbackWhitelist: [/^\/pages/],
-      // Do not precache images
+      // // Do not precache images
       // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
       runtimeCaching: [
         {

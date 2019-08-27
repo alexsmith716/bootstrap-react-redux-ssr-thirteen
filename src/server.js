@@ -24,6 +24,8 @@ import config from '../config/config';
 import apiClient from './helpers/apiClient';
 // import { createApp } from './app';
 
+import { HelmetProvider } from 'react-helmet-async';
+
 console.log('>>>>>>>>>>>>>>>>> SERVER > ES > CONFIG >>>>>>>>>>>>>>>>>>>>>>>>: ', config);
 
 // ------------------------------------------------------------------------------------------------------
@@ -160,6 +162,8 @@ export default ({ clientStats }) => async (req, res) => {
 
     // {renderRoutes(routes)} : routes to render
 
+    const helmetContext = {};
+
     // 'context' object contains the results of the render
     const context = {};
 
@@ -167,7 +171,9 @@ export default ({ clientStats }) => async (req, res) => {
       <Provider store={store} {...providers}>
         <Router history={history}>
           <StaticRouter location={req.originalUrl} context={context}>
-            {renderRoutes(routes)}
+            <HelmetProvider context={helmetContext}>
+              {renderRoutes(routes)}
+            </HelmetProvider>
           </StaticRouter>
         </Router>
       </Provider>
@@ -238,14 +244,14 @@ export default ({ clientStats }) => async (req, res) => {
     // console.log('>>>>>>>>>>>>>>>> SERVER > SSR ==================== ASSETS  !!: ', assets);
     // console.log('>>>>>>>>>>>>>>>> SERVER > SSR ==================== STORE   !!: ', store);
     // console.log('>>>>>>>>>>>>>>>> SERVER > SSR ==================== CONTENT !!: ', content);
+    // const { helmet } = helmetContext;
 
-    const html = <Html assets={assets} store={store} content={content} />;
+    const html = <Html assets={assets} store={store} content={content} head={helmetContext.helmet} />;
+
     const ssrHtml = `<!doctype html>${ReactDOM.renderToString(html)}`;
-
-    // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > RESPOND TO CLIENT !! > renderToString(html):', ssrHtml);
-
+    // // console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > RESPOND TO CLIENT !! > renderToString(html):', ssrHtml);
     res.status(200).send(ssrHtml);
-    // res.status(200).send('SERVER > Response Ended For Testing!!!!!!! Status 200!!!!!!!!!');
+    // // res.status(200).send('SERVER > Response Ended For Testing!!!!!!! Status 200!!!!!!!!!');
 
   } catch (error) {
     console.log('>>>>>>>>>>>>>>>> SERVER > APP LOADER > TRY > ERROR > error: ', error);

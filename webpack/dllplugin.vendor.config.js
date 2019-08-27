@@ -92,7 +92,7 @@ module.exports = {
       'jquery',
       'react',
       'react-dom',
-      'react-helmet',
+      'react-helmet-async',
       'react-redux',
       'react-router',
       'redux'

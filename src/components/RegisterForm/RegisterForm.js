@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import PropTypes from 'prop-types';
 
-
 const Input = ({input, label, type, meta: { touched, error, submitError }, ...rest}) => (
 
   <div className={`form-group ${(error || submitError) && touched ? 'has-error' : ''}`}>
@@ -27,14 +26,12 @@ const Input = ({input, label, type, meta: { touched, error, submitError }, ...re
   </div>
 );
 
-
-Input.propTypes = {
-  input: PropTypes.objectOf(PropTypes.any).isRequired,
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  meta: PropTypes.objectOf(PropTypes.any).isRequired
-};
-
+// Input.propTypes = {
+//   input: PropTypes.objectOf(PropTypes.any).isRequired,
+//   label: PropTypes.string.isRequired,
+//   type: PropTypes.string.isRequired,
+//   meta: PropTypes.objectOf(PropTypes.any).isRequired
+// };
 
 const RegisterForm = ({ onSubmit }) => (
 

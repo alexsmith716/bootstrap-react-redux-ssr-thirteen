@@ -174,8 +174,8 @@ export default function configureStore({ data, helpers, persistConfig }) {
 
   if (__DEVELOPMENT__ && module.hot) {
     console.log('>>>>>>>>>>>>>>>>>>> configureStore() > YES MODULE.HOT <<<<<<<<<<<<<<<<<');
-    module.hot.accept('./reducers', () => {
-      let reducer = require('./reducers');
+    module.hot.accept('./reducer', () => {
+      let reducer = require('./reducer');
       reducer = combine((reducer.__esModule ? reducer.default : reducer)(store.asyncReducers), persistConfig);
       store.replaceReducer(reducer);
     });

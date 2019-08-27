@@ -27,6 +27,7 @@ const Html = ({ assets, store, content }) => {
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
 
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="manifest" href="/manifest.json" />
 
         <meta name="mobile-web-app-capable" content="yes" />

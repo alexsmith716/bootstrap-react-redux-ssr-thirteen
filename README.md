@@ -7,6 +7,26 @@ App builds off 'bootstrap-react-redux-webpack-ssr-twelve'. This app utilizes cus
 =============================================================
 =============================================================
 
+Note on moving to `react-helmet-async` from `react-helmet`:
+
+Warning received:
+
+  `Please update the following components: SideEffect(NullComponent)`
+
+Github issues mentioned:
+
+  https://github.com/facebook/react/issues/16582
+  https://github.com/readium/readium-desktop/issues/596
+  https://github.com/nfl/react-helmet/issues/426
+  https://github.com/gaearon/react-side-effect/issues/40
+  https://github.com/nfl/react-helmet/issues/467
+  https://github.com/gaearon/react-side-effect/issues/54#issuecomment-520056590
+
+Issue related to lifecycle 'componentWillMount' usage and 'Context' in `react-helmet`. 
+
+=============================================================
+=============================================================
+
 FIX ME | TO DO'S:
 
 // 1 ---------------

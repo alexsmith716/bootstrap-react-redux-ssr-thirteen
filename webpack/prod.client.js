@@ -349,7 +349,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/pwa.js',
-      showErrors: true
+      showErrors: true,
       // minify: {
       //   removeComments: true,
       //   collapseWhitespace: true,

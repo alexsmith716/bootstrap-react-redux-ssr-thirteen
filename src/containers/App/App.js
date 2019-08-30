@@ -15,8 +15,6 @@ import config from '../../../config/config';
 
 // --------------------------------------------------------------------------
 
-// ensure all data for a set of routes is prefetched on the server before attempting to render
-// in order to accommodate this, define and trigger custom route-level lifecycle hooks on route handlers
 @provideHooks({
   fetch: async ({ store: { dispatch, getState } }) => {
     if (!isInfoLoaded(getState())) {
@@ -30,36 +28,9 @@ import config from '../../../config/config';
 
 // --------------------------------------------------------------------------
 
-// @connect(
-//   state => ({
-//     notifs: state.notifs
-//   }),
-// )
-
-// --------------------------------------------------------------------------
-// HOC: apply HOCs outside the component definition so that the resulting component is created only once. 
-// Then, it's identity will be consistent across renders
-// Decorators are applied in the order that you declare them
-// '@provideHooks' && '@connect' are being applied to class 'App'
-// Decorators are functions that return another function
-// class decorators evaluated on runtime && decorated code is replaced with the return value
-
-// HOC to access the imperative API
-// You can get access to the history object's properties and the closest <Route>'s 
-//   match via the withRouter higher-order component.
-// withRouter will pass updated match, location, and history props to the wrapped component whenever it renders.
-
-// Each history object has the following properties:
-//  history.length - The number of entries in the history stack
-//  history.location - The current location (see below)
-//  history.action - The current navigation action (PUSH, REPLACE, POP)
-
 @withRouter
 
 // --------------------------------------------------------------------------
-
-// ES6 does not support creating properties with 'static'
-// Stage 3 proposal >>> "@babel/plugin-proposal-class-properties"
 
 class App extends Component {
 
@@ -69,11 +40,6 @@ class App extends Component {
     // user: PropTypes.shape({ email: PropTypes.string }),
     // notifs: PropTypes.shape({global: PropTypes.array}).isRequired,
   };
-
-  // If contextTypes is not defined, then context will be an empty object
-  // static contextTypes = {
-  //   store: PropTypes.objectOf(PropTypes.any).isRequired
-  // };
 
   static defaultProps = {
     user: null
@@ -121,8 +87,6 @@ class App extends Component {
     const { notifs, route } = this.props;
 
     const styles = require('./styles/App.scss');
-
-    // console.log('>>>>>>>>>>>>>>>> APP > render() <<<<<<<<<<<<<< !!STORE!!: ', this.props.store);
 
     return (
 

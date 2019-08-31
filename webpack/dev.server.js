@@ -106,9 +106,11 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
-              sourceMapContents: false,
-              outputStyle: 'expanded', // https://github.com/sass/node-sass#outputstyle
+              sassOptions: {
+                sourceMap: true,
+                sourceMapContents: false,
+                outputStyle: 'expanded',
+              },
             }
           },
           {

@@ -139,9 +139,11 @@ const webpackConfig = {
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
-              sourceMapContents: false,
-              outputStyle: 'expanded',
+              sassOptions: {
+                sourceMap: true,
+                sourceMapContents: false,
+                outputStyle: 'expanded',
+              },
             }
           },
           {

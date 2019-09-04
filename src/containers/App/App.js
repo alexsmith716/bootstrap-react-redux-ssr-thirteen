@@ -54,7 +54,6 @@ class App extends Component {
     console.log('>>>>>>>>>>>>>>>> APP > componentDidMount() <<<<<<<<<<<<<<');
   }
 
-
   componentDidUpdate(prevProps, prevState) {
     console.log('>>>>>>>>>>>>>>>> APP > componentDidUpdate() <<<<<<<<<<<<<<');
     // const { location } = this.props;

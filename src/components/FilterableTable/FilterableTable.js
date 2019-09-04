@@ -178,8 +178,6 @@ class FilterableTable extends Component {
 
     console.log('>>>>>>>>>>>>>>>> FilterableTable > handleDropdownChange() > selectedOption: ', selectedOption);
 
-    // e.preventDefault();
-
     selectedOption({
       selected: e.target.value
     });
@@ -248,6 +246,10 @@ class FilterableTable extends Component {
 
       }
     }
+
+    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > ITEMS>>>>>>>>: ', items);
+    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > LOADED>>>>>>>: ', loaded);
+    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > LOADING>>>>>>: ', loading);
 
     // ------------------------------------------------------------------------------------
 

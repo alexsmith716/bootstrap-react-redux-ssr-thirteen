@@ -44,6 +44,10 @@ class LineChart extends Component {
     // addNewDataFunc: PropTypes.func.isRequired,
   }
 
+  state = {
+    prevProps: this.props
+  };
+
   // ==============================================================================================
 
 
@@ -82,11 +86,18 @@ class LineChart extends Component {
   // invoked after a component is instantiated as well as before it is re-rendered
   // --------------------------------------------------------------------------------
   static getDerivedStateFromProps(props, state) {
+    const { prevProps } = state;
+    // chance to compare incoming props to previous props
     console.log('>>>>>>>>>>>>>>>> LineChart > getDerivedStateFromProps() <<<<<<<<<<<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>> LineChart > getDerivedStateFromProps() > prevProps: ', prevProps);
+    // return {
+    //   prevProps: props
+    // };
     return null;
   };
 
   // invoked before rendering when new props or state are being received (default: true)
+  // method not called for initial render
   // let react know if a component's output is not affected by the current change in state or props
   // evaluate "true" ? re-render
   shouldComponentUpdate(nextProps, nextState) {

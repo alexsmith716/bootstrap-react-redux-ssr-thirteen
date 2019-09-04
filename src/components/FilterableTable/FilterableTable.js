@@ -40,6 +40,12 @@ class FilterableTable extends Component {
     // load: PropTypes.func.isRequired,
   };
 
+  // static defaultProps = {};
+
+  state = {
+    prevProps: this.props
+  };
+
   // ==============================================================================================
 
 
@@ -53,6 +59,11 @@ class FilterableTable extends Component {
 
   // render()
 
+  // RE: component that subscribes to an external event dispatcher
+  // Event listeners are only safe to add after mount,
+  // So they won't leak if mount is interrupted or errors.
+  // External values could change between render and mount,
+  // In some cases it may be important to handle this case.
   componentDidMount() {
     const { data } = this.props;
     console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidMount() > data1: ', data);
@@ -76,11 +87,18 @@ class FilterableTable extends Component {
   // invoked after a component is instantiated as well as before it is re-rendered
   // --------------------------------------------------------------------------------
   static getDerivedStateFromProps(props, state) {
+    const { prevProps } = state;
+    // chance to compare incoming props to previous props
     console.log('>>>>>>>>>>>>>>>> FilterableTable > getDerivedStateFromProps() <<<<<<<<<<<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>> FilterableTable > getDerivedStateFromProps() > prevProps: ', prevProps);
+    // return {
+    //   prevProps: props
+    // };
     return null;
   };
 
   // invoked before rendering when new props or state are being received (default: true)
+  // method not called for initial render
   // let react know if a component's output is not affected by the current change in state or props
   // evaluate "true" ? re-render
   shouldComponentUpdate(nextProps, nextState) {
@@ -200,17 +218,14 @@ class FilterableTable extends Component {
       ? arrayLike = true
       : arrayLike = null;
 
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > externalData > ARRAYLIKE ??? ', arrayLike, '!');
+    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > this.state: ', this.state);
+    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > ARRAYLIKE ??? ', arrayLike, '!');
     console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > dropDownOptionSelected: ', dropDownOptionSelected);
     console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > data: ', data);
     console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > loading: ', loading);
-    // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > Object.entries()::::::: ', Object.entries(data));
 
-    // return (
-    //   <div>{`${dropDownOptionSelected}`}</div>
-    // )
-
-    if (data) {
+    // quick, easy hack show use of tables 
+    if (data && (dropDownOptionSelected.indexOf('https') === 0 || dropDownOptionSelected.indexOf('http') === 0)) {
 
       if (arrayLike) {
 
@@ -236,14 +251,8 @@ class FilterableTable extends Component {
       } else {
 
         items = Object.keys(data).map((item, index) => {
-          // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > Object.keys(): index: ', index, ' item: ', item,' data[item]: ', data[item]);
           return <div key={index}>{`${index}: ${item}: "${data[item]}"`}</div>;
         });
-
-        // items = Object.keys(data).map((item, index) => (
-        //   <div key={index}>{`${index}: ${item}: "${data[item]}"`}</div>
-        // ));
-
       }
     }
 

@@ -16,7 +16,7 @@ class Tables extends Component {
   }
 
   static propTypes = {
-    tablesData: PropTypes.object.isRequired,
+    // tablesData: PropTypes.object.isRequired,
     filterText: PropTypes.string,
     inStockOnly: PropTypes.bool
   };

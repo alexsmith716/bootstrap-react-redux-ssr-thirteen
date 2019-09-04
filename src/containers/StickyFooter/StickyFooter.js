@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Helmet } from 'react-helmet-async';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet-async';
 
 class StickyFooter extends Component {
 

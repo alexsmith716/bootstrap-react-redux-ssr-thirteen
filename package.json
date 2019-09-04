@@ -20,8 +20,7 @@
     "clean:dlls": "rimraf build/dlls  webpack/dlls",
     "prettier": "prettier-eslint --write --eslint-config-path .eslintrc './+(bin)/**/*.js'",
     "lint": "eslint -c .eslintrc bin",
-    "test": "NODE_PATH=src jest src",
-    "lighthouse-report": "lighthouse http://localhost:8080 --view"
+    "test": "NODE_PATH=src jest src"
   },
   "dependencies": {
     "@babel/register": "^7.5.5",
@@ -190,7 +189,7 @@
     "webpack-assets-manifest": "^3.1.1",
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-middleware": "^3.7.0",
+    "webpack-dev-middleware": "^3.7.1",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-hot-server-middleware": "^0.6.0",
     "webpack-pwa-manifest": "^4.0.0",

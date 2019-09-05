@@ -67,30 +67,6 @@ class AboutOne extends Component {
 
     // const dropdownTiltle = 'Select Product Table';
 
-    const dropDownOptionsGithubAPI = [
-      'https://api.github.com/feeds',
-      'https://api.github.com/emojis',
-      'https://api.github.com/events',
-      'https://api.github.com/gists/public',
-      'https://api.github.com/gists/656565656565',
-
-    ];
-
-    const dropDownOptionsLocalJsonData = [
-      '/json-data/product-categories.json',
-      '/json-data/product-categories2.json',
-      '/json-data/product-categories-test.json',
-      '/json-data/events-test.json',
-      '/json-data/product-categories-small.json',
-      '/json-data/product-categories-small2.json',
-      '/json-data/product-categories-small.json',
-      '/json-data/product-categories.json',
-      '/json-data/product-categories-small.json',
-      '/json-data/product-categories.json',
-      '/json-data/product-categories-small.json',
-      '/json-data/product-categories.json',
-    ];
-
     const dropDownOptions = [
       'https://api.github.com/feeds',
       'https://api.github.com/emojis',
@@ -136,7 +112,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Thinking in React!
               </h2>
 
@@ -169,7 +145,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Thinking in React!
               </h2>
 
@@ -202,7 +178,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Thinking in React!
               </h2>
 
@@ -235,7 +211,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Thinking in React!
               </h2>
 
@@ -272,7 +248,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Thinking in React!
               </h2>
 
@@ -305,7 +281,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Dynamic, Controlled Form 3
               </h2>
 
@@ -337,7 +313,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Dynamic, Controlled Form 1
               </h2>
 
@@ -370,7 +346,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Dynamic, Controlled Form 2
               </h2>
 
@@ -403,7 +379,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Clock: state and lifecycle in a basic React component!
               </h2>
 
@@ -437,7 +413,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Thinking in React!
               </h2>
 
@@ -470,7 +446,7 @@ class AboutOne extends Component {
 
             <div className="card h-100">
 
-              <h2 className="card-header text-center">
+              <h2 className="card-header text-center font-tester-font2">
                 Thinking in React!
               </h2>
 

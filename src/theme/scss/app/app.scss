@@ -16,10 +16,6 @@ body {
   cursor: pointer;
 }
 
-h2 {
-  @include tester-font2;
-}
-
 hr {
   border-color: $secondary;
 }

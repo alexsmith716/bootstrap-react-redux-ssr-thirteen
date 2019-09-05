@@ -41,3 +41,7 @@
 .font-roboto-mono-v4-latin-regular {
   @include roboto-mono-v4-latin-regular-font;
 }
+
+.font-tester-font2 {
+  @include tester-font2;
+}

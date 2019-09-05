@@ -245,7 +245,7 @@ module.exports = {
           output: {
             comments: false,
           },
-          mangle: true,
+          // mangle: true,
         },
         cache: true,
         parallel: true,
@@ -353,7 +353,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/pwa.js',
-      showErrors: true,
+      // showErrors: true,
       // minify: {
       //   removeComments: true,
       //   collapseWhitespace: true,

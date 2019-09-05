@@ -64,14 +64,14 @@ class About extends Component {
             <img className="img-fluid rounded mb-4" src={aboutImageMain} alt="" />
           </div>
           <div className="col-lg-6">
-            <h2>About Modern Business!</h2>
+            <h2 className="font-tester-font2">About Modern Business!</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, magni, aperiam vitae illum voluptatum aut sequi impedit non velit ab ea pariatur sint quidem corporis eveniet. Odit, temporibus reprehenderit dolorum!</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis?</p>
           </div>
         </div>
 
-        <h2>Our Team</h2>
+        <h2 className="font-tester-font2">Our Team</h2>
 
         <div className="row">
           <div className="col-lg-4 mb-4">
@@ -115,7 +115,7 @@ class About extends Component {
           </div>
         </div>
 
-        <h2>Our Customers</h2>
+        <h2 className="font-tester-font2">Our Customers</h2>
         <div className="row">
           <div className="col-lg-2 col-sm-4 mb-4">
             <img className="img-fluid" src={aboutImageOurCustomers} alt="" />
@@ -134,13 +134,6 @@ class About extends Component {
           </div>
           <div className="col-lg-2 col-sm-4 mb-4">
             <img className="img-fluid" src={aboutImageOurCustomers} alt="" />
-          </div>
-        </div>
-
-        <h2>This Component's State!!!</h2>
-        <div className="row">
-          <div className="col-lg-12 d-flex justify-content-center">
-            <p className="color-crimson font-opensans-bold-webfont">'componentButtonState' store state is componentButtonState !!!!!!!!!!!!!!!!</p>
           </div>
         </div>
 

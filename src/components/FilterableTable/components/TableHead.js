@@ -27,7 +27,7 @@ class TableHead extends Component {
   }
 
   componentWillUnmount() {
-    // console.log('>>>>>>>>>>>>>>>> TABLEHEAD > componentWillUnmount <<<<<<<<<<<<<<<<<<<<<<');
+    console.log('>>>>>>>>>>>>>>>> TABLEHEAD > componentWillUnmount <<<<<<<<<<<<<<<<<<<<<<');
   }
 
   tableHeadIntervalChange = (headingColor) => {
@@ -36,17 +36,13 @@ class TableHead extends Component {
 
   render() {
 
-    // console.log('>>>>>>>>>>>>>>>> TABLEHEAD > this.props.data:', this.props.data);
     const headingColor = this.state.headingColor;
-    // console.log('>>>>>>>>>>>>>>>> TABLEHEAD > STATE > headingColor !!!:', headingColor);
 
     let rows = [];
 
     rows.push( <TableRow type="thead" colSpan={this.props.heading.length} category={this.props.category} headingColor={headingColor} onIntervalChange={this.tableHeadIntervalChange} key="thead-category" /> );
 
     rows.push( <TableRow type="thead" data={this.props.heading} key={this.props.heading} /> );
-
-    // console.log('>>>>>>>>>>>>>>>> TABLEHEAD !!!!!!! > rows:', rows);
 
     return (
 

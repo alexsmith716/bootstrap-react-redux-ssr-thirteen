@@ -42,9 +42,9 @@ class Home extends Component {
 
           <div className="container">
 
-            <h1>App 2019</h1>
+            <h1>App 2020</h1>
 
-            <h2>The Midterms are almost here!</h2>
+            <h2 className="font-tester-font2">The Primary is right around the corner!</h2>
 
             <div className={styles.blurb}>What are you and others saying?</div>
 
@@ -104,7 +104,7 @@ class Home extends Component {
 
           <div className="row">
             <div className="col-lg-12 d-flex justify-content-center">
-              <p className="color-crimson font-opensans-bold-webfont">'online' store state is online !!!!!!!!!!!!!!!!</p>
+              <p className="color-crimson font-opensans-bold-webfont">{`'online' store state is ${online} !`}</p>
             </div>
           </div>
 

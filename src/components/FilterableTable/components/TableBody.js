@@ -10,9 +10,7 @@ class TableBody extends Component {
 
     super(props);
 
-    // this.state = {
-
-    // };
+    // this.state = {};
   }
 
   static propTypes = {
@@ -25,12 +23,9 @@ class TableBody extends Component {
 
   render() {
 
-    // console.log('>>>>>>>>>>>>>>>> TableBody !!!!!! > this.props.data: ', this.props.tableData);
-
     let rows = [];
 
     this.props.tableData.forEach((obj, index, arr) => {
-      // console.log('>>>>>>>>>>>>>>>> TableBody !!!!!! > this.props.tableData.forEach: ', obj);
       rows.push( <TableRow data={ obj } key={ index } /> );
     });
 

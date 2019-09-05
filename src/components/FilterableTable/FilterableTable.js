@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'multireducer';
 import { connect } from 'react-redux';
@@ -25,6 +25,16 @@ import * as filterableTableActions from '../../redux/modules/filterableTable';
 )
 
 class FilterableTable extends Component {
+
+  // https://reactjs.org/docs/forms.html
+  // https://reactjs.org/docs/uncontrolled-components.html
+  // react controlled component onChange
+  // 'onChange' handler captures 'onChange' event for '<div>' and 'children'
+
+  // constructor(props){
+  //   super(props);
+  //   console.log('>>>>>>>>>>>>>>>> FilterableTable > constructor() <<<<<<<<<<<<<<<<<<<<<<');
+  // }
 
   static propTypes = {
     // dropDownOptionSelected: PropTypes.string,
@@ -68,9 +78,9 @@ class FilterableTable extends Component {
     const { data } = this.props;
     console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidMount() > data1: ', data);
     if (data === null) {
-      console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidMount() > data2');
+      // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidMount() > data2');
     } else {
-      console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidMount() > data3');
+      // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidMount() > data3');
     }
   }
 
@@ -123,22 +133,26 @@ class FilterableTable extends Component {
   // component has been updated, so do something
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { loading, loaded, error, errorResponse, data, load, dropDownOptionSelected } = this.props;
+    const { filterText, inStockOnly } = this.props;
+
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > filterText: ', filterText);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > inStockOnly: ', inStockOnly);
 
     console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > description: ', this.props.description);
     console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > dropDownOptionSelected: ', dropDownOptionSelected);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > DATA: ', data);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > prevProps.DATA: ', prevProps.data);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > error: ', error);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > errorResponse: ', errorResponse);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > loading: ', loading);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > loaded: ', loaded);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > DATA: ', data);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > prevProps.DATA: ', prevProps.data);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > error: ', error);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > errorResponse: ', errorResponse);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > loading: ', loading);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > loaded: ', loaded);
 
     if (data === prevProps.data) {
-      console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() @@@@@@@@@@@@@@ > 11111111111111');
+      // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() @@@@@@@@@@@@@@ > 11111111111111');
     }
 
     if (data !== prevProps.data) {
-      console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() @@@@@@@@@@@@@@ > 22222222222222');
+      // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() @@@@@@@@@@@@@@ > 22222222222222');
     }
 
     // LOAD_FAIL
@@ -148,12 +162,12 @@ class FilterableTable extends Component {
     }
 
     if (loading) {
-      console.log('11111111111111111111 ####################################### 11111111111111111111');
+      // console.log('11111111111111111111 ####################################### 11111111111111111111');
       load({ request: dropDownOptionSelected });
     }
 
     if (loaded && !loading) {
-      console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > LOAD_SUCCESS: ');
+      // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > LOAD_SUCCESS: ');
     }
   }
 
@@ -192,12 +206,26 @@ class FilterableTable extends Component {
   // ==============================================================================================
 
   handleDropdownChange = (e) => {
-    const { selectedOption } = this.props;
+    const { actionHandleDropdownChange } = this.props;
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > handleDropdownChange() > e.target.value: ', e.target.value);
+    actionHandleDropdownChange({
+      data: e.target.value
+    });
+  };
 
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > handleDropdownChange() > selectedOption: ', selectedOption);
+  handleFilterTextChange = (e) => {
+    const { actionFilterTextChange } = this.props;
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > actionFilterTextChange() > e: ', e.target.value);
+    actionFilterTextChange({
+      data: e.target.value
+    });
+  };
 
-    selectedOption({
-      selected: e.target.value
+  handleInStockChange = (e) => {
+    const { actionInStockChange } = this.props;
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > actionInStockChange() > e.target.checked: ', e.target.checked);
+    actionInStockChange({
+      data: e.target.checked
     });
   };
 
@@ -218,11 +246,14 @@ class FilterableTable extends Component {
       ? arrayLike = true
       : arrayLike = null;
 
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > this.state: ', this.state);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > ARRAYLIKE ??? ', arrayLike, '!');
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > dropDownOptionSelected: ', dropDownOptionSelected);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > data: ', data);
-    console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > loading: ', loading);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > filterText: ', filterText);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > inStockOnly: ', inStockOnly);
+
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > this.state: ', this.state);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > ARRAYLIKE ??? ', arrayLike, '!');
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > dropDownOptionSelected: ', dropDownOptionSelected);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > data: ', data);
+    // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > loading: ', loading);
 
     // quick, easy hack show use of tables 
     if (data && (dropDownOptionSelected.indexOf('https') === 0 || dropDownOptionSelected.indexOf('http') === 0)) {
@@ -273,10 +304,10 @@ class FilterableTable extends Component {
             <div className="width-400">
 
               <DropdownSelect
-                title={description}
-                optionsArray={optionsArray}
-                dropDownOptionSelected={dropDownOptionSelected}
-                onChange={this.handleDropdownChange}
+                title={ description }
+                optionsArray={ optionsArray }
+                dropDownOptionSelected={ dropDownOptionSelected }
+                onChange={ this.handleDropdownChange }
               />
 
             </div>

@@ -1,72 +1,52 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'react-final-form';
 
+const SearchBar = props => {
 
-class SearchBar extends Component {
+  const { 
+    filterText,
+    inStockOnly,
+    onFilterTextChange,
+    onInStockChange
+  } = props;
 
-  constructor(props) {
-    super(props);
+  // console.log('>>>>>>>>>>>>>>>> SearchBar > props: ', props);
 
-  }
+  return (
 
-  static propTypes = {
-    filterText: PropTypes.string,
-    inStockOnly: PropTypes.bool,
-    onFilterTextChange: PropTypes.func,
-    onInStockChange: PropTypes.func
-  };
+    <form>
 
-  handleFilterTextChange(e) {
-    // console.log('>>>>>>>>>>>>>>> SearchBar > handleFilterTextChange > e.target.value:', e.target.value)
-    this.props.onFilterTextChange(e.target.value);
-  }
-  
-  handleInStockChange(e) {
-    // console.log('>>>>>>>>>>>>>>> SearchBar > handleInStockChange > e.target.checked:', e.target.checked)
-    this.props.onInStockChange(e.target.checked);
-  }
+      <div className="form-group">
 
-  render() {
+        <input
+          type="text"
+          className="form-control"
+          id="searchBar"
+          placeholder="Search by product name..."
+          value={ filterText }
+          onChange={ onFilterTextChange }
+        />
 
-    const styles = require('./scss/SearchBar.scss');
+      </div>
 
-    return (
+      <div className="form-check">
 
-      <form>
+        <input
+          type="checkbox"
+          className="form-check-input"
+          id="productsInStock"
+          checked={ inStockOnly }
+          onChange={ onInStockChange }
+        />
 
-        <div className="form-group">
+        <label className="form-check-label" htmlFor="productsInStock">
+          Only show products in stock
+        </label>
 
-          <input
-            type="text"
-            className="form-control"
-            id="searchBar"
-            placeholder="Search..."
-            value={this.props.filterText}
-            onChange={this.handleFilterTextChange}
-          />
+      </div>
 
-        </div>
-
-        <div className="form-check">
-
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="productsInStock"
-            checked={this.props.inStockOnly}
-            onChange={this.handleInStockChange}
-          />
-
-          <label className="form-check-label" htmlFor="productsInStock">
-            Only show products in stock
-          </label>
-
-        </div>
-
-      </form>
-    );
-  }
-}
+    </form>
+  );
+};
 
 export default SearchBar;

@@ -15,7 +15,7 @@ TO DO's:
 
   - `Warning: Failed prop type: Invalid prop `tablesData` of type `array` supplied to `Tables`, expected`
 
-2) Going over and fine tuning all React (lifecycles) and Redux (initial state/state/reducer)
+2) Going over and fine tuning/completely re-doing all React (lifecycles) and Redux (initial state/state/reducer)
 
 =============================================================
 =============================================================

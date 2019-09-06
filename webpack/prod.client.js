@@ -240,15 +240,12 @@ module.exports = {
     minimizer: [
       // minify javascript 
       new TerserPlugin({
-        // extractComments: true,
         terserOptions: {
           output: {
             comments: false,
           },
           // mangle: true,
         },
-        cache: true,
-        parallel: true,
         sourceMap: true
       }),
       // minify css (default: cssnano)

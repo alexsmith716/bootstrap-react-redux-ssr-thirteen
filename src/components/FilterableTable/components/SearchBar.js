@@ -1,16 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const SearchBar = props => {
 
-  const { 
-    filterText,
-    inStockOnly,
-    onFilterTextChange,
-    onInStockChange
-  } = props;
-
-  // console.log('>>>>>>>>>>>>>>>> SearchBar > props: ', props);
+  const { filterText, inStockOnly, onFilterTextChange, onInStockChange } = props;
 
   return (
 

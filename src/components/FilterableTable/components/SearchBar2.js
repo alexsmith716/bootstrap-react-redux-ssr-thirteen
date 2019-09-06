@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'react-final-form';
-
 
 class SearchBar extends Component {
-
-  constructor(props) {
-    super(props);
-
-  }
 
   static propTypes = {
     filterText: PropTypes.string,
@@ -18,18 +11,14 @@ class SearchBar extends Component {
   };
 
   handleFilterTextChange(e) {
-    // console.log('>>>>>>>>>>>>>>> SearchBar > handleFilterTextChange > e.target.value:', e.target.value)
     this.props.onFilterTextChange(e.target.value);
   }
   
   handleInStockChange(e) {
-    // console.log('>>>>>>>>>>>>>>> SearchBar > handleInStockChange > e.target.checked:', e.target.checked)
     this.props.onInStockChange(e.target.checked);
   }
 
   render() {
-
-    const styles = require('./scss/SearchBar.scss');
 
     return (
 

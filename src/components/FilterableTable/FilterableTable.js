@@ -24,16 +24,43 @@ import * as filterableTableActions from '../../redux/modules/filterableTable';
   (dispatch, { as }) => bindActionCreators({ ...filterableTableActions }, dispatch, as)
 )
 
+// closure, global scope, function scope, block scope, arrow functions
+// var, let, const and variable declarations in loops
+
+// scope, Function Invocation, Method Invocation, Constructor Invocation
+
+// been in an ES6 env so long i need REVIEW again!
+
+// defined component (ES6 class)
+// https://reactjs.org/docs/react-without-es6.html#autobinding
+
+// Autobinding:
+
+// =======================================================================================================
+// In React components declared as ES6 classes, methods follow the same semantics as regular ES6 classes. 
+// >>>>>>>>>>>>>>>> This means that they don’t automatically bind this to the instance <<<<<<<<<<<<<<<<<<<
+// >>>>>>>>>>>>>>>>   You’ll have to explicitly use .bind(this) in the constructor     <<<<<<<<<<<<<<<<<<<
+// =======================================================================================================
+
+// app ES6 environment is using:
+//  "@babel/plugin-proposal-class-properties"
+// which binds all methods
+// So, no need to use .bind(this) in the constructor
+
+// https://reactjs.org/docs/forms.html
+// https://reactjs.org/docs/uncontrolled-components.html
+// react controlled component onChange
+// 'onChange' handler captures 'onChange' event for '<div>' and 'children'
+
 class FilterableTable extends Component {
 
-  // https://reactjs.org/docs/forms.html
-  // https://reactjs.org/docs/uncontrolled-components.html
-  // react controlled component onChange
-  // 'onChange' handler captures 'onChange' event for '<div>' and 'children'
-
+  // Autobinding NOT NEEDED > ES6 env > "@babel/plugin-proposal-class-properties"
   // constructor(props){
   //   super(props);
-  //   console.log('>>>>>>>>>>>>>>>> FilterableTable > constructor() <<<<<<<<<<<<<<<<<<<<<<');
+  //   // bind event handler method to an instance
+  //   this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+  //   this.handleInStockChange = this.handleInStockChange.bind(this);
+  //   this.handleDropdownChange = this.handleDropdownChange.bind(this);
   // }
 
   static propTypes = {
@@ -133,10 +160,6 @@ class FilterableTable extends Component {
   // component has been updated, so do something
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { loading, loaded, error, errorResponse, data, load, dropDownOptionSelected } = this.props;
-    const { filterText, inStockOnly } = this.props;
-
-    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > filterText: ', filterText);
-    // console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > inStockOnly: ', inStockOnly);
 
     console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > description: ', this.props.description);
     console.log('>>>>>>>>>>>>>>>> FilterableTable > componentDidUpdate() > dropDownOptionSelected: ', dropDownOptionSelected);
@@ -242,9 +265,7 @@ class FilterableTable extends Component {
     // const errorText = {`${errorResponse.message} /\n ${errorResponse.message}`};
     let items = null;
 
-    let arrayLike = data && data.length > 0
-      ? arrayLike = true
-      : arrayLike = null;
+    let arrayLike = data && data.length > 0 ? arrayLike = true : arrayLike = null;
 
     // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > filterText: ', filterText);
     // console.log('>>>>>>>>>>>>>>>> FilterableTable > render() > inStockOnly: ', inStockOnly);

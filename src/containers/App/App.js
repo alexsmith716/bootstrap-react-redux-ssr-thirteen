@@ -11,6 +11,9 @@ import { Link } from 'react-router-dom';
 
 import { isLoaded as isInfoLoaded, load as loadInfo } from '../../redux/modules/info';
 import { InfoBar } from '../../components'; //Notifs
+import { Footer } from '../../components';
+import { ReadmeModal } from '../../components';
+import { FontsModal } from '../../components';
 import config from '../../../config/config';
 
 // --------------------------------------------------------------------------
@@ -110,6 +113,10 @@ class App extends Component {
                 <ul className="navbar-nav mr-auto">
 
                   <li className="nav-item">
+                    <a className="nav-link" data-toggle="modal" href="#ReadmeModal">README</a>
+                  </li>
+
+                  <li className="nav-item">
                     <Link to='/about' className="nav-link js-scroll-trigger">About</Link>
                   </li>
 
@@ -127,12 +134,12 @@ class App extends Component {
                   </li>
 
                   <li className="nav-item">
-                    <a className="nav-link font-old-english" data-toggle="modal" href="#appModal1">Modal</a>
+                    <a className="nav-link font-old-english" data-toggle="modal" href="#FontsModal">Fonts</a>
                   </li>
 
                   <li className="nav-item">
                     <a className="nav-link font-norwester" href="#">
-                      <span className={`fas fa-fw fa-headphones /\n${styles.colorGoldLocal}`}></span><span className={styles.testColorFont}>Headphones!</span></a>
+                      <span className={`fas fa-fw fa-headphones ${styles.colorGoldLocal}`}></span><span className={styles.testColorFont}>Headphones!</span></a>
                   </li>
 
                   <li className="nav-item dropdown">
@@ -156,62 +163,18 @@ class App extends Component {
 
           <InfoBar />
 
-          <div className={styles.footer}>
-            <div className="container h-100">
-              <div className={`h-100 d-flex flex-column justify-content-center align-items-center ${styles.flexContainer}`}>
-                <div>Copyright &copy; 2020 · Election App 2020</div>
-                <div><span className={`fas fa-headphones fa-padding ${styles.colorGoldLocal}`}></span><span className={`font-norwester ${styles.colorGoldLocal}`}>Footer Headphones!</span></div>
-              </div>
-            </div>
-          </div>
+          <Footer 
+            styles={ styles }
+          />
 
-          <div className="app-modal modal fade" id="appModal1" tabIndex="-1" role="dialog" aria-labelledby="appModalLabel" aria-hidden="true">
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="appModalLabel">Modal Test</h5>
-                  <button className="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div className="modal-body">
+          <ReadmeModal 
+            styles={ styles }
+          />
 
-                  <p className={styles.sharedVarColorRutgersScarletXX}>Modal is working. This paragraph's font and the above modal-title's font is using Bootstrap's default font. It is the default 'global' font for this app. It is overriding Bootstrap's default font 'font-family-sans-serif'. It's a hard to read font but easily recognizable for development purposes.</p>
+          <FontsModal 
+            styles={ styles }
+          />
 
-                  <p className={styles.specialAppFontColor}>This paragraph's '@font-face' is 'Old English'.</p>
-
-                  <p className="font-roboto-mono-V4-latin-regular">This paragraph's '@font-face' is 'roboto-mono-v4-latin-regular'.</p>
-
-                  <p className="font-montserratlight color-salmon">This paragraph's '@font-face' is 'font-montserratlight'.</p>
-
-                  <p className="font-lobster-v20-latin-regular">This paragraph's '@font-face' is 'lobster-v20-latin-regular'.</p>
-
-                  <p className="font-norwester">This paragraph's '@font-face' is 'norwester'.</p>
-
-                  <p className="color-crimson open-sans-italic-webfont">This paragraph's '@font-face' is 'OpenSans-Italic-webfont'.</p>
-
-                  <p className="font-philosopher-bold-webfont">This paragraph's '@font-face' is 'font-philosopher-bold-webfont'.</p>
-
-                  <p className="font-sourcesanspro-regular-webfont">This paragraph's '@font-face' is 'sourcesanspro-regular-webfont'.</p>
-
-                  <p className={`color-springgreen ${styles.montserratLightFontGlobalToLocal}`}>This paragraph's '@font-face' is 'MontserratLight'. It is scoped Global to Local.</p>
-
-                  <p className="color-orangered font-opensans-bold-webfont">This paragraph's '@font-face' is 'OpenSans-Bold-webfont' It is scoped Global.</p>
-
-                  <p className={styles.colorCrimsonCssLocal}>This paragraph's color is 'colorCrimsonCssLocal'. It is scoped Local fom 'AppCss1.css'.</p>
-
-                  <p className={styles.coloredText2Local}>This paragraph's color is 'coloredText2Local'. It is scoped Local fom 'AppScss2.scss'.</p>
-
-                </div>
-
-                <div className="modal-footer">
-                  <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                  <a className="btn btn-primary" href="#">Button Somewhere</a>
-                </div>
-
-              </div>
-            </div>
-          </div>
         </div>
       </HelmetProvider>
     );

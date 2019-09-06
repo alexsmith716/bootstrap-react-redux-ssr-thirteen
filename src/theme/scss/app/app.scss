@@ -24,6 +24,10 @@ hr.light {
   border-color: $light;
 }
 
+.svg-padding-right {
+  padding-right: calculate-rem(4px);
+}
+
 .fa-padding {
   padding-left: calculate-rem(4px);
   padding-right: calculate-rem(4px);

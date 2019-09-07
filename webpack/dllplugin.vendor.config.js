@@ -60,7 +60,6 @@ module.exports = {
       '@babel/runtime-corejs3/core-js/parse-float.js',
       '@babel/runtime-corejs3/core-js/parse-int.js',
       '@babel/runtime-corejs3/core-js/promise.js',
-      '@babel/runtime-corejs3/core-js/set-immediate.js',
       '@babel/runtime-corejs3/core-js/set-interval.js',
       '@babel/runtime-corejs3/core-js/set-timeout.js',
       '@babel/runtime-corejs3/core-js/symbol.js',

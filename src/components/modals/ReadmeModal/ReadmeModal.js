@@ -1,16 +1,16 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const ReadmeModal = props => {
+const ReadmeModal = () => {
 
-  const { styles } = props;
+  const styles = require('./ReadmeModal.scss');
 
   return (
 
-    <div className="app-modal modal fade" id="ReadmeModal" tabIndex="-1" role="dialog" aria-labelledby="appModalLabel" aria-hidden="true">
+    <div className={`app-modal modal fade ${styles.grayFourteen}`} id="ReadmeModal" tabIndex="-1" role="dialog" aria-labelledby="appModalLabel" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
-          <div className="modal-header d-flex flex-items-center flex-justify-between px-2">
+          <div className={`modal-header d-flex flex-items-center flex-justify-between px-2 ${styles.ghostWhite}`}>
 
             <h5 className="modal-title pr-3" id="appModalLabel">
               <svg aria-hidden="true" className="octicon octicon-book svg-padding-right" height="22" version="1.1" viewBox="0 1 16 16" width="22">
@@ -35,10 +35,10 @@ const ReadmeModal = props => {
                         </h2>
 
                         <p>
-                          A meeting place for the 2020 Primary! Cast votes and discuss what's going on. Actually, more of a JS playground that keeps evolving.
+                          A meeting place for the 2020 Primary! Cast your vote of opinion and discuss what's going on. Well, the fact is, it's actually more of an evolving JS playground.
                         </p>
                         <p>
-                          Why? Because the I really enjoy the challenge and reward of modern JavaScript development. Instead of creating alot of small projects with a single focus, I just keep building upon this big one.
+                          Why? Because I really enjoy the challenge and reward of modern JavaScript development. Instead of creating alot of small projects with a single focus, I just keep building upon this one.
                         </p>
 
                         {/* ------------------------------ */}

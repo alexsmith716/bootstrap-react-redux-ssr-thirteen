@@ -1,37 +1,79 @@
+import React, { Component } from 'react';
+import { Helmet } from 'react-helmet-async';
+import PropTypes from 'prop-types';
+
+class CodeSampleWebpackProdServer extends Component {
+
+  // called after the first render
+  componentDidMount() {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > componentDidMount() <<<<<<<<<<<<<<<<<<<<<<');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > componentDidUpdate() <<<<<<<<<<<<<<<<<<<<<<');
+  }
+
+  componentWillUnmount() {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > componentWillUnmount() <<<<<<<<<<<<<<');
+  }
+
+  // invoked before rendering when new props or state are being received
+  // --------------------------------------------------------------------------------
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > shouldComponentUpdate() > nextProps: ', nextProps);
+    return nextProps;
+  };
+
+  // ERROR HANDLING (error during render, in a lifecycle, in the constructor of any child component)
+  // ----------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------------
+
+  static getDerivedStateFromError(error) {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > getDerivedStateFromError() > error: ', error);
+    // Update state so the next render will show the fallback UI.
+    // return { hasError: true };
+    return;
+  }
+
+  componentDidCatch(error, info) {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > componentDidCatch() > info.componentStack: ', info.componentStack);
+  }
+
+  render() {
+
+    return (
+
+      <div className="container">
+
+        <Helmet title="Code Sample Webpack Prod Server" />
+
+        <h1 className="mt-4 mb-3">Webpack Production Server Build</h1>
+
+        <h4 className="mt-4 mb-3">file: prod.server.js</h4>
+
+        <div className="row">
+
+          <div>
+
+            <pre className="pre-style" >
+
+{`
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
-// const config = require('../config/config');
 const externals = require('./node-externals');
 
-// const loaderUtils = require('loader-utils').stringifyRequest;
-
+const WebpackBar = require('webpackbar');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const { DuplicatesPlugin } = require('inspectpack/plugin');
 
 const rootPath = path.resolve(__dirname, '..');
 
-const generatedIdent = (name, localName) => {
-  return name + '__' + localName;
+const generatedIdent = (name, localName, lr) => {
+  const r = Buffer.from(lr).toString('base64');
+  return name + '__' + localName + '--' + r.substring( r.length-12, r.length-3 );
 };
 
-// ==============================================================================================
-
-// const babelrc = fs.readFileSync('./.babelrc', 'utf8');
-// let prodconfig = {};
-// 
-// try {
-//   prodconfig = JSON.parse(babelrc);
-//   console.error('>>>>>>>>> webpack prod.server > SUCCESS: parsing .babelrc !!typeof: ', typeof prodconfig)
-//   console.error('>>>>>>>>> webpack prod.server > SUCCESS: parsing .babelrc !!: ', prodconfig)
-// } catch (err) {
-//   console.error('>>>>>>>>> webpack prod.server > ERROR: parsing .babelrc: ', err)
-// }
-
-// ==============================================================================================
-
-// server bundle targeting 'node'
-// entry point to server bundle ('server.js') renders to string
 module.exports = {
 
   context: path.resolve(__dirname, '..'),
@@ -39,17 +81,18 @@ module.exports = {
   name: 'server',
   target: 'node',
   externals,
-  mode: 'development',
-  // devtool: 'eval',  // generated code
-  // devtool: false,
-  devtool: 'source-map',
+  mode: 'production',
+  // devtool: 'hidden-source-map',
+  // devtool: 'source-map',
 
   entry: {
-    server: './src/server.js'
+    server: './src/server.js',
+    // serverTest: './src/serverTest.js'
   },
 
   output: {
     path: path.resolve('./build/server'),
+    // filename: 'server.js',
     filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
@@ -73,7 +116,7 @@ module.exports = {
                   if (path.basename(loaderContext.resourcePath).indexOf('global.scss') !== -1) {
                     return localName;
                   } else {
-                    return generatedIdent(path.basename(loaderContext.resourcePath).replace(/\.[^/.]+$/, ""), localName);
+                    return generatedIdent(path.basename(loaderContext.resourcePath).replace(/\.[^/.]+$/, ""), localName, loaderContext.resourcePath);
                   }
                 },
                 mode: 'local',
@@ -84,9 +127,6 @@ module.exports = {
           },
           {
             loader: 'resolve-url-loader',
-            options: {
-              // debug: true,
-            }
           },
           {
             loader: 'postcss-loader',
@@ -102,8 +142,7 @@ module.exports = {
             options: {
               sassOptions: {
                 sourceMap: true,
-                sourceMapContents: false,
-                outputStyle: 'expanded',
+                outputStyle: 'compressed',
               },
             }
           },
@@ -132,7 +171,7 @@ module.exports = {
                   if (path.basename(loaderContext.resourcePath).indexOf('global.scss') !== -1) {
                     return localName;
                   } else {
-                    return generatedIdent(path.basename(loaderContext.resourcePath).replace(/\.[^/.]+$/, ""), localName);
+                    return generatedIdent(path.basename(loaderContext.resourcePath).replace(/\.[^/.]+$/, ""), localName, loaderContext.resourcePath);
                   }
                 },
                 mode: 'local',
@@ -143,10 +182,6 @@ module.exports = {
           },
           {
             loader: 'resolve-url-loader',
-            options: {
-              // sourceMap: true,
-              // debug: true,
-            }
           },
           {
             loader: 'postcss-loader',
@@ -173,7 +208,7 @@ module.exports = {
           limit: 10240,
           mimetype: 'application/font-woff'
         }
-      }, 
+      },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader',
@@ -181,14 +216,11 @@ module.exports = {
           limit: 10240,
           mimetype: 'application/octet-stream'
         }
-      }, 
+      },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader',
-        // options: {
-        //   name: '[path][name].[ext]',
-        // },
-      }, 
+        loader: 'file-loader'
+      },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader',
@@ -205,35 +237,35 @@ module.exports = {
   },
 
   resolve: {
-    // modules: [ 'client', 'node_modules' ],
-    extensions: ['.json', '.js', '.jsx', '.scss'],
+    extensions: ['.json', '.js', '.jsx'],
   },
 
   plugins: [
-    // new webpack.ProgressPlugin(handler),
-    // https://webpack.js.org/plugins/module-concatenation-plugin/
-    // new webpack.optimize.ModuleConcatenationPlugin(),
-    // https://webpack.js.org/plugins/internal-plugins/#occurrenceorderplugin
-    // new webpack.optimize.OccurrenceOrderPlugin(),
-    // https://webpack.js.org/plugins/limit-chunk-count-plugin/
-    // After compiling some chunks are too small - creating larger HTTP overhead
-    // post-process chunks by merging them
 
-    // LimitChunkCountPlugin with 'maxChunks: 1' insures only one file is generated 
-    //    for server bundle so it can be run synchronously
+    new WebpackBar({ name: 'Server' }),
+
+    new webpack.optimize.ModuleConcatenationPlugin(),
+
+    new webpack.optimize.OccurrenceOrderPlugin(),
+
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),
+
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('development') },
+      'process.env': { NODE_ENV: JSON.stringify('production') },
       __CLIENT__: false,
       __SERVER__: true,
-      __DEVELOPMENT__: true,
-      __DEVTOOLS__: true
+      __DEVELOPMENT__: false,
+      __DEVTOOLS__: false,
+      __DLLS__: false
     }),
+
+    new webpack.HashedModuleIdsPlugin(),
+
     // new BundleAnalyzerPlugin({
     //   analyzerMode: 'static',
-    //   reportFilename: '../../analyzers/bundleAnalyzer/dev.serverAA.html',
+    //   reportFilename: '../../analyzers/bundleAnalyzer/prod.serverXXX2.html',
     //   openAnalyzer: false,
     //   generateStatsFile: false
     // }),
@@ -243,5 +275,18 @@ module.exports = {
     //   emitHandler: undefined,
     //   verbose: true
     // }),
-  ]
+  ],
 };
+`}
+
+            </pre>
+
+          </div>
+        </div>
+      </div>
+
+    );
+  }
+};
+
+export default CodeSampleWebpackProdServer;

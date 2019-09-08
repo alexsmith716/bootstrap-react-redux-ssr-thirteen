@@ -11,6 +11,11 @@ import Login from './containers/Login/Loadable';
 import Register from './containers/Register/Loadable';
 // import LoginSuccess from './containers/LoginSuccess/Loadable';
 
+import { 
+  CodeSampleWebpackProdClient,
+  CodeSampleWebpackProdServer,
+} from './containers';
+
 import './theme/scss/bootstrap/bootstrap.global.scss';
 
 // const isAuthenticated = connectedReduxRedirect({
@@ -45,6 +50,8 @@ const routes = [{
     { path: '/boardgames', component: BoardGames },
     { path: '/login', component: Login },
     { path: '/register', component: Register },
+    { path: '/codesamplewebpackprodclient', component: CodeSampleWebpackProdClient },
+    { path: '/codesamplewebpackprodserver', component: CodeSampleWebpackProdServer },
     // { path: '/login-success', component: isAuthenticated(LoginSuccess) },
     // { path: '/register', component: isNotAuthenticated(Register) },
     { component: NotFound }

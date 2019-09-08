@@ -44,11 +44,6 @@ const generatedIdent = (name, localName) => {
   // substring args based on resourcePath length
 };
 
-const handler = (percentage, message, ...args) => {
-  // e.g. Output each progress message directly to the console:
-  console.info(percentage, message, ...args);
-};
-
 // ==============================================================================================
 
 // client bundle targeting 'web'
@@ -71,6 +66,7 @@ const webpackConfig = {
       'react-devtools',
       `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
       // `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr&timeout=20000&reload=true`,
+      // './src/theme/scss/bootstrap/bootstrap.global.scss',
       'bootstrap',
       './src/client.js'
     ]
@@ -123,7 +119,6 @@ const webpackConfig = {
           {
             loader: 'resolve-url-loader',
             options: {
-              // sourceMap: true,
               // debug: true,
             }
           },
@@ -188,7 +183,6 @@ const webpackConfig = {
           {
             loader: 'resolve-url-loader',
             options: {
-              // sourceMap: true,
               // debug: true,
             }
           },

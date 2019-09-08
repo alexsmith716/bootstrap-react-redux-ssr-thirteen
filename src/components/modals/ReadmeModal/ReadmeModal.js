@@ -8,7 +8,7 @@ const ReadmeModal = () => {
   return (
 
     <div className={`app-modal modal fade ${styles.graySixteen}`} id="ReadmeModal" tabIndex="-1" role="dialog" aria-labelledby="appModalLabel" aria-hidden="true">
-      <div className="modal-dialog" role="document">
+      <div className="modal-dialog modal-lg" role="document">
         <div className="modal-content">
           <div className={`modal-header d-flex flex-items-center flex-justify-between px-2 ${styles.ghostWhite}`}>
 
@@ -48,48 +48,42 @@ const ReadmeModal = () => {
                           A meeting place for the 2020 Primary! Cast your vote of opinion and discuss what's going on. Currently, the app is an evolving JS playground.
                         </p>
                         <p>
-                          Why? Because I really enjoy the challenge and reward of modern JavaScript development. Instead of creating alot of small projects with a single focus, I just keep building upon this one.
+                          Why? Because I really enjoy the challenge and reward of modern JavaScript development. Instead of creating alot of small projects with a single focus, I just keep building upon this one. I have spent many, many, hours working on this "app" and therefore various aspects of modern JS development. I am no expert on this stuff and am occasionally very humbled by how complex the work is.
                         </p>
                         <p>
-                          Initially inspired by Erik Rasmussen's, <a href="https://github.com/erikras" rel="nofollow">@erikras</a> and Kévin Berthommier's, <a href="https://github.com/bertho-zero" rel="nofollow">@bertho-zero</a> <a href="https://github.com/bertho-zero/react-redux-universal-hot-example" rel="nofollow">react-redux-universal-hot-example</a>. I have since used a few components from the original (listed below) but have also re-worked and built out several as well.
+                          Initially inspired by Erik Rasmussen's, <a href="https://github.com/erikras" rel="nofollow">@erikras</a> and Kévin Berthommier's, <a href="https://github.com/bertho-zero" rel="nofollow">@bertho-zero</a> <a href="https://github.com/bertho-zero/react-redux-universal-hot-example" rel="nofollow">react-redux-universal-hot-example</a>. I have since directly used a few components and pieces of code from the original ("RouterTrigger.js", "configureStore.js") but have also re-worked and built out a fair amount as well including the app build process, webpack development build and css modules. I'm actually not 100% sure if the different approaches I used in my code are better than the original app's but it helps in better understanding what is going on with node, server/client, universal rendering, sync/async, transpiling, webpack, scss and bascially everything JavaScript.
                         </p>
-
                         <p>
-                          Components "borrowed" from <a href="https://github.com/bertho-zero/react-redux-universal-hot-example" rel="nofollow">react-redux-universal-hot-example</a>
-                        </p>
-                        <ul>
-                          <li>
-                            "RouterTrigger.js"
-                          </li>
-                          <li>
-                            "configureStore.js"
-                          </li>
-                        </ul>
-                        <p>
-                          I might place "clientMiddleware.js" in the list above, but that amazingly simple and effective solution goes back to the genius himself <a href="https://github.com/reduxjs/redux/issues/99#issuecomment-112212639" rel="nofollow">Best async serverside loading technique?</a>
+                          Component "clientMiddleware.js" is interesting because that amazingly simple and effective solution goes back to the genius himself <a href="https://github.com/reduxjs/redux/issues/99#issuecomment-112212639" rel="nofollow">Best async serverside loading technique?</a>
                         </p>
 
                         <h4>
-                          Features
+                          Features (no particular order)
                         </h4>
-                        <p>
-                          Features intro here ...
-                        </p>
+
                         <ul>
                           <li>
-                            Listed feature 1 ...
+                            Production build (TerserPlugin, OptimizeCSSAssetsPlugin, workbox-webpack-plugin)
                           </li>
                           <li>
-                            Listed feature 2 ...
+                            Development build (DllPlugin, Hot Module Replacement, React Hot Loading)
+                          </li>
+                          <li>
+                            Babel ES+ transpiling (use future JavaScript today!)
+                          </li>
+                          <li>
+                            CSS Modules (scope class names local or global -assert control over CSS)
+                          </li>
+                          <li>
+                            react-helmet-async (asynchronous management to document head)
+                          </li>
+                          <li>
+                            Sass (cool way to build CSS!)
+                          </li>
+                          <li>
+                            TWBS Bootstrap (not a CSS guru, use this framework)
                           </li>
                         </ul>
-
-                        <h4>
-                          Future directions
-                        </h4>
-                        <p>
-                          Future directions here...
-                        </p>
 
                         {/* ------------------------------ */}
 
@@ -102,44 +96,58 @@ const ReadmeModal = () => {
                         <h4>
                           Development
                         </h4>
-                        <ol>
-                          <li>
-                            Installation 1 ...
-                          </li>
-                          <li>
-                            Installation 2 ...
-                          </li>
-                        </ol>
+
+                        <pre className="pre-style" >
+                          git clone the app
+                          <br />
+                          cd into the app
+                          <br />
+                          yarn dlls
+                          <br />
+                          yarn dev
+                          <br />
+                          http://localhost:3000
+                        </pre>
 
                         <h4>
                           Production
                         </h4>
-                        <ol>
-                          <li>
-                            Installation 1 ...
-                          </li>
-                          <li>
-                            Installation 2 ...
-                          </li>
-                        </ol>
+
+                        <pre className="pre-style" >
+                          git clone the app
+                          <br />
+                          cd into the app
+                          <br />
+                          yarn prod
+                          <br />
+                          https://localhost:8080
+                        </pre>
 
                         {/* ------------------------------ */}
 
                         <h3>
-                          Contributing
+                          Things To Do
                         </h3>
 
                         <hr className={`${styles.hrStyle}`} />
 
-                        <p>
-                          Contributing here...
-                        </p>
-                        <h4>
-                          Code Style
-                        </h4>
-                        <p>
-                          Code Style here...
-                        </p>
+                        <ul>
+                          <li>
+                            view source in the browser to see pre-loaded state
+                          </li>
+                          <li>
+                            view source in the browser to observe document head changes
+                          </li>
+                          <li>
+                            view source in the browser to see what chunks are being sent on each page
+                          </li>
+                          <li>
+                            open Network tab to see imports being fetched
+                          </li>
+                          <li>
+                            Production Only: view Storage tab > Cache Storage to see workbox-precache
+                          </li>
+                        </ul>
                     </article>
                 </div>
             </div>

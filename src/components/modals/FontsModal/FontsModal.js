@@ -11,14 +11,14 @@ const FontsModal = props => {
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="appModalLabel">Fonts Modal</h5>
+            <h5 className="modal-title" id="appModalLabel">Fonts Modal!</h5>
             <button className="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
           <div className="modal-body">
 
-            <p className={styles.sharedVarColorRutgersScarletXX}>Modal is working. This paragraph's font and the above modal-title's font is using Bootstrap's default font. It is the default 'global' font for this app. It is overriding Bootstrap's default font 'font-family-sans-serif'. It's a hard to read font but easily recognizable for development purposes.</p>
+            <p className={styles.sharedVarColorRutgersScarletXX}>This paragraph's font and the above modal-title's font is using Bootstrap's default font. It is the default 'global' font for this app. It is overriding Bootstrap's default font 'font-family-sans-serif'. It's a hard to read font but easily recognizable for development purposes.</p>
 
             <p className={styles.specialAppFontColor}>This paragraph's '@font-face' is 'Old English'.</p>
 

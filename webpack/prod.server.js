@@ -88,9 +88,6 @@ module.exports = {
           },
           {
             loader: 'resolve-url-loader',
-            options: {
-              // sourceMap: true,
-            },
           },
           {
             loader: 'postcss-loader',
@@ -106,8 +103,7 @@ module.exports = {
             options: {
               sassOptions: {
                 sourceMap: true,
-                sourceMapContents: false,
-                outputStyle: 'expanded',
+                outputStyle: 'compressed',
               },
             }
           },

@@ -167,9 +167,7 @@ class App extends Component {
             styles={ styles }
           />
 
-          <ReadmeModal 
-            styles={ styles }
-          />
+          <ReadmeModal />
 
           <FontsModal 
             styles={ styles }

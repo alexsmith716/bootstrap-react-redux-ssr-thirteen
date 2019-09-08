@@ -10,9 +10,7 @@ class Tables extends Component {
 
     super(props);
 
-    // this.state = {
-
-    // };
+    // this.state = {};
   }
 
   static propTypes = {

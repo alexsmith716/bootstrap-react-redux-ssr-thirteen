@@ -24,6 +24,11 @@ hr.light {
   border-color: $light;
 }
 
+.pre-style { 
+  background-color: #F8F8FF;
+  padding: calculate-rem(16px);
+}
+
 .svg-padding-right {
   padding-right: calculate-rem(4px);
 }

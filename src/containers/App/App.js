@@ -116,12 +116,12 @@ class App extends Component {
                     <a className="nav-link" data-toggle="modal" href="#ReadmeModal">README.js</a>
                   </li>
 
-                  <li className="nav-item">
-                    <Link to='/about' className="nav-link js-scroll-trigger">About</Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link to='/stickyfooter' className="nav-link js-scroll-trigger">StickyFooter</Link>
+                  <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Code Samples</a>
+                    <div className="dropdown-menu" aria-labelledby="dropdown01">
+                      <Link to='/codesamplewebpackprodclient' className="dropdown-item js-scroll-trigger">prod.client.js</Link>
+                      <Link to='/codesamplewebpackprodserver' className="dropdown-item js-scroll-trigger">prod.server.js</Link>
+                    </div>
                   </li>
 
                   <li className="nav-item">
@@ -143,13 +143,14 @@ class App extends Component {
                   </li>
 
                   <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Links</a>
-                    <div className="dropdown-menu" aria-labelledby="dropdown01">
-                      <Link to='/aboutone' className="dropdown-item js-scroll-trigger">About One</Link>
-                      <Link to='/abouttwo' className="dropdown-item js-scroll-trigger">About Two</Link>
+                    <a className="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Interesting Links</a>
+                    <div className="dropdown-menu" aria-labelledby="dropdown02">
+                      <Link to='/about' className="dropdown-item js-scroll-trigger">About</Link>
+                      <Link to='/aboutone' className="dropdown-item js-scroll-trigger">About One!</Link>
+                      <Link to='/abouttwo' className="dropdown-item js-scroll-trigger">About Two!</Link>
                       <Link to='/aboutthree' className="dropdown-item js-scroll-trigger">About Three</Link>
                       <Link to='/aboutfour' className="dropdown-item js-scroll-trigger">About Four</Link>
-                      <Link to='/boardgames' className="dropdown-item js-scroll-trigger">Board Games</Link>
+                      <Link to='/stickyfooter' className="dropdown-item js-scroll-trigger">StickyFooter</Link>
                     </div>
                   </li>
                 </ul>

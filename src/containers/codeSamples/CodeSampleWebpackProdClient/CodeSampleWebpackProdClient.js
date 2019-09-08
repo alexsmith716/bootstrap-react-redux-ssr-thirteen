@@ -1,3 +1,63 @@
+import React, { Component } from 'react';
+import { Helmet } from 'react-helmet-async';
+import PropTypes from 'prop-types';
+
+class CodeSampleWebpackProdClient extends Component {
+
+  // called after the first render
+  componentDidMount() {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > componentDidMount() <<<<<<<<<<<<<<<<<<<<<<');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > componentDidUpdate() <<<<<<<<<<<<<<<<<<<<<<');
+  }
+
+  componentWillUnmount() {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > componentWillUnmount() <<<<<<<<<<<<<<');
+  }
+
+  // invoked before rendering when new props or state are being received
+  // --------------------------------------------------------------------------------
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > shouldComponentUpdate() > nextProps: ', nextProps);
+    return nextProps;
+  };
+
+  // ERROR HANDLING (error during render, in a lifecycle, in the constructor of any child component)
+  // ----------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------------
+
+  static getDerivedStateFromError(error) {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > getDerivedStateFromError() > error: ', error);
+    // Update state so the next render will show the fallback UI.
+    // return { hasError: true };
+    return;
+  }
+
+  componentDidCatch(error, info) {
+    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > componentDidCatch() > info.componentStack: ', info.componentStack);
+  }
+
+  render() {
+
+    return (
+
+      <div className="container">
+
+        <Helmet title="Code Sample Webpack Prod Client" />
+
+        <h1 className="mt-4 mb-3">Webpack Production Client Build</h1>
+
+        <h4 className="mt-4 mb-3">file: prod.client.js</h4>
+
+        <div className="row">
+
+          <div>
+
+            <pre className="pre-style" >
+
+{`
 const path = require('path');
 const webpack = require('webpack');
 
@@ -26,39 +86,16 @@ const generatedIdent = (name, localName, lr) => {
   return name + '__' + localName + '--' + r.substring( r.length-12, r.length-3 );
 };
 
-// ==============================================================================================
-
-// https://github.com/bholloway/resolve-url-loader/blob/master/packages/resolve-url-loader/README.md#configure-webpack
-// source-maps required for loaders preceding resolve-url-loader (regardless of devtool)
-
-// https://webpack.js.org/api/node/
-// https://webpack.js.org/configuration/stats/
-
-// https://webpack.js.org/plugins/split-chunks-plugin/
-// https://github.com/webpack/webpack/blob/master/examples/many-pages/README.md
-
-// https://cssnano.co/guides/
-// https://cssnano.co/guides/presets/
-
-// Combining gzip compression with minification leads to the best reduction in file size
-
-// ==============================================================================================
-
 module.exports = {
 
   context: path.resolve(__dirname, '..'),
-  // the home directory for webpack
-  // the entry and module.rules.loader option is resolved relative to this directory
   name: 'client',
   target: 'web',
   mode: 'production',
   // devtool: (none) > fastest > quality: bundled code
-  // devtool: 'hidden-source-map', // SourceMap without reference in original file
-  // devtool: 'source-map', // most detailed at the expense of build speed
 
   entry: {
     main: [
-      // './src/theme/scss/bootstrap/bootstrap.global.scss',
       'bootstrap',
       './src/client.js',
     ]
@@ -221,7 +258,6 @@ module.exports = {
 
   optimization: {
     minimizer: [
-      // minify javascript 
       new TerserPlugin({
         terserOptions: {
           output: {
@@ -231,9 +267,7 @@ module.exports = {
         },
         sourceMap: true
       }),
-      // minify css (default: cssnano)
-      // preset:[] : cssnanoOpts
-      // map:{} :    postcssOpts
+
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           preset: ['default', { discardComments: { removeAll: true } }],
@@ -244,8 +278,7 @@ module.exports = {
         }
       })
     ],
-    // Code Splitting: Prevent Duplication: Use the SplitChunksPlugin to dedupe and split chunks!
-    // react-hot-loader | react-redux | react-router-dom | react-router
+
     splitChunks: {
       cacheGroups: {
         vendors: {
@@ -282,41 +315,8 @@ module.exports = {
       { from: path.resolve(buildPath, './launcher-icon-512-512.png'), to: assetPath },
     ]),
 
-    // new WebpackPwaManifest({
-    //   icons: [
-    //     {
-    //       src: path.resolve(buildPath, './launcher-icon-2x.png'),
-    //       sizes: '96x96',
-    //       type: 'image/png'
-    //     },
-    //     {
-    //       src: path.resolve(buildPath, './launcher-icon-3x.png'),
-    //       sizes: '144x144',
-    //       type: 'image/png'
-    //     },
-    //     {
-    //       src: path.resolve(buildPath, './launcher-icon-4x.png'),
-    //       sizes: '192x192',
-    //       type: 'image/png'
-    //     }
-    //   ],
-    //   name: 'Applying thunk middleware for Redux',
-    //   short_name: 'ElectionApp2019',
-    //   start_url: '/',
-    //   display: 'standalone',
-    //   orientation: 'landscape',
-    //   theme_color: '#87CEFF',
-    //   background_color: '#87CEFF',
-    //   // crossorigin: 'use-credentials'
-    // }),
-
     new ExtractCssChunks({
       filename: '[name].[contenthash].css',
-      // chunkFilename: '[name].[contenthash].chunk.css',
-      // hot: false,
-      // orderWarning: true,
-      // reloadAll: true,
-      // cssModules: true
     }),
 
     new webpack.optimize.ModuleConcatenationPlugin(),
@@ -335,28 +335,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/pwa.js',
-      // showErrors: true,
-      // minify: {
-      //   removeComments: true,
-      //   collapseWhitespace: true,
-      //   removeRedundantAttributes: true,
-      //   useShortDoctype: true,
-      //   removeEmptyAttributes: true,
-      //   removeStyleLinkTypeAttributes: true,
-      //   keepClosingSlash: true,
-      //   minifyJS: true,
-      //   minifyCSS: true,
-      //   minifyURLs: true,
-      // },
     }),
 
-    // https://webpack.js.org/plugins/provide-plugin/
-    // Use modules without having to use import/require
-    // ProvidePlugin: Whenever the identifier is encountered as free variable in a module, 
-    //    the module is loaded automatically and the identifier is filled with the exports of 
-    //    the loaded module (of property in order to support named exports).
-
-    // To automatically load jquery point variables it exposes to the corresponding node module
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -390,56 +370,13 @@ module.exports = {
     //   verbose: true
     // }),
 
-    // =============================================================
-    // globDirectory: base directory to match globPatterns against, relative to the current working directory
-    // [maximumFileSizeToCacheInBytes] will not have any effect, it only modifies files matched by 'globPatterns'
-    // 'Update on reload' automatically reload SW when a new one is available
-
-    // https://developers.google.com/web/tools/workbox/guides/precache-files/webpack
-    // tell Workbox to precache the files by adding the following code to your service worker:
-    // This will precache any of the files from the Webpack plugin
-    // workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
-
-    // https://developers.google.com/web/tools/workbox/modules/workbox-precaching
-    // Serving Precached Responses:
-    // Calling workbox.precaching.precacheAndRoute() or 
-    //  workbox.precaching.addRoute() will create a route that matches requests for precached URLs
-
-    // The response strategy used in this route is cache-first: 
-    //  the precached response will be used, unless that cached response is not present 
-    //  (due to some unexpected error), in which case a network response will be used instead
-
-    // https://developers.google.com/web/tools/workbox/modules/workbox-routing#how_to_register_a_navigation_route
-    // How to Register a Navigation Route:
-    // for a SPA, use a 'NavigationRoute' to return a specific response for all navigation requests
-    // 'NavigationRoute':
-    //    https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox.routing.NavigationRoute
-    // navigation requests: 
-    //    https://developers.google.com/web/fundamentals/primers/service-workers/high-performance-loading#first_what_are_navigation_requests
-
-    // navigateFallback:
-    //    meant to be used in a SPA scenario, in which all navigations use a common App Shell HTML
-
-    // https://developers.google.com/web/tools/workbox/reference-docs/latest/
-    // handler: 'CacheFirst'
-    // handler: 'CacheOnly'
-    // handler: 'NetworkFirst'
-    // handler: 'NetworkOnly'
-
     new GenerateSW({
       swDest: path.join(buildPath, 'service-worker.js'),
       clientsClaim: true,
       skipWaiting: true,
-      importWorkboxFrom: 'local',
-      // importWorkboxFrom: 'cdn',
+      importWorkboxFrom: 'cdn',
       navigateFallback: '/dist/index.html',
-      // // Exempt all URLs that start with /_ or contain admin anywhere:
-      // navigateFallbackBlacklist: [/^\/_/, /admin/],
-      // // Include URLs that start with /pages:
-      // navigateFallbackWhitelist: [/^\/pages/],
-      // // Do not precache:
       exclude: [/\.map$/,],
-      // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
       runtimeCaching: [
         {
           urlPattern: /favicon\.ico/,
@@ -462,81 +399,20 @@ module.exports = {
             }
           }
         },
-        // {
-        //   // To match cross-origin requests, use a RegExp that matches
-        //   // the start of the origin:
-        //   urlPattern: new RegExp('^https://api\.github\.com/'),
-        //   handler: 'NetworkFirst',
-        //   // handler: 'StaleWhileRevalidate',
-        //   // options: {
-        //   //   cacheableResponse: {
-        //   //     statuses: [0, 200]
-        //   //   }
-        //   // }
-        // },
-        // {
-        //   // Match any same-origin request that contains 'api'.
-        //   urlPattern: /api/,
-        //   // Apply a network-first strategy.
-        //   handler: 'NetworkFirst',
-        //   options: {
-        //     // Fall back to the cache after 10 seconds.
-        //     networkTimeoutSeconds: 10,
-        //     // Use a custom cache name for this route.
-        //     cacheName: 'my-api-cache',
-        //     // Configure custom cache expiration.
-        //     expiration: {
-        //       maxEntries: 5,
-        //       maxAgeSeconds: 60,
-        //     },
-        //     // Configure background sync.
-        //     backgroundSync: {
-        //       name: 'my-queue-name',
-        //       options: {
-        //         maxRetentionTime: 60 * 60,
-        //       },
-        //     },
-        //     // Configure which responses are considered cacheable.
-        //     cacheableResponse: {
-        //       statuses: [0, 200],
-        //       headers: {'x-test': 'true'},
-        //     },
-        //     // Configure the broadcast cache update plugin.
-        //     broadcastUpdate: {
-        //       channelName: 'my-update-channel',
-        //     },
-        //     // Add in any additional plugin logic you need.
-        //     plugins: [
-        //       {cacheDidUpdate: () => /* custom plugin code */}
-        //     ],
-        //     // matchOptions and fetchOptions are used to configure the handler.
-        //     fetchOptions: {
-        //       mode: 'no-cors',
-        //     },
-        //     matchOptions: {
-        //       ignoreSearch: true,
-        //     },
-        //   },
-        // },
       ],
     }),
-
-    // https://github.com/GoogleChrome/workbox/issues/708
-    // The InjectManifest plugin is intended for developers who want to "own" their service worker's behavior, 
-    //  but still want the precache manifest generation/integration
-
-    // new InjectManifest({
-    //     swSrc: path.resolve(buildPath, './src-service-worker.js'),
-    //     swDest: 'service-worker.js',
-    //     globDirectory: 'build/',
-    //     globPatterns: ['server/server.js', 'manifest.json', '/'],
-    //     importsDirectory: 'dist',
-    // }),
-
-    // new InjectManifest({
-    //   swSrc: path.resolve(buildPath, './service-workerA.js'),
-    //   swDest: 'service-worker.js',
-    //   importWorkboxFrom: 'local',
-    // })
   ],
 };
+`}
+
+            </pre>
+
+          </div>
+        </div>
+      </div>
+
+    );
+  }
+};
+
+export default CodeSampleWebpackProdClient;

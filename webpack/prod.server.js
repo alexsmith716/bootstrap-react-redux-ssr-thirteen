@@ -15,11 +15,6 @@ const generatedIdent = (name, localName, lr) => {
   return name + '__' + localName + '--' + r.substring( r.length-12, r.length-3 );
 };
 
-const handler = (percentage, message, ...args) => {
-  // e.g. Output each progress message directly to the console:
-  console.info(percentage, message, ...args);
-};
-
 // ==============================================================================================
 
 // const babelrc = fs.readFileSync('./.babelrc', 'utf8');
@@ -143,9 +138,6 @@ module.exports = {
           },
           {
             loader: 'resolve-url-loader',
-            options: {
-              // sourceMap: true,
-            },
           },
           {
             loader: 'postcss-loader',

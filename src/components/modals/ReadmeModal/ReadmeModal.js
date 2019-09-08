@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const ReadmeModal = () => {
@@ -7,7 +7,7 @@ const ReadmeModal = () => {
 
   return (
 
-    <div className={`app-modal modal fade ${styles.grayFourteen}`} id="ReadmeModal" tabIndex="-1" role="dialog" aria-labelledby="appModalLabel" aria-hidden="true">
+    <div className={`app-modal modal fade ${styles.graySixteen}`} id="ReadmeModal" tabIndex="-1" role="dialog" aria-labelledby="appModalLabel" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className={`modal-header d-flex flex-items-center flex-justify-between px-2 ${styles.ghostWhite}`}>
@@ -34,38 +34,41 @@ const ReadmeModal = () => {
                           App 2020
                         </h2>
 
-                        <p>
-                          A meeting place for the 2020 Primary! Cast your vote of opinion and discuss what's going on. Well, the fact is, it's actually more of an evolving JS playground.
-                        </p>
-                        <p>
-                          Why? Because I really enjoy the challenge and reward of modern JavaScript development. Instead of creating alot of small projects with a single focus, I just keep building upon this one.
-                        </p>
-
-                        {/* ------------------------------ */}
-
-                        <h3>
-                          Installation
-                        </h3>
-                        <ol>
-                          <li>
-                            Installation 1 ...
-                          </li>
-                          <li>
-                            Installation 2 ...
-                          </li>
-                          <li>
-                            Installation 3 ...
-                          </li>
-                        </ol>
+                        <hr/>
 
                         {/* ------------------------------ */}
 
                         <h3>
                           About
                         </h3>
+
+                        <hr className={`${styles.hrStyle}`} />
+
                         <p>
-                          About intro here ...
+                          A meeting place for the 2020 Primary! Cast your vote of opinion and discuss what's going on. Currently, the app is an evolving JS playground.
                         </p>
+                        <p>
+                          Why? Because I really enjoy the challenge and reward of modern JavaScript development. Instead of creating alot of small projects with a single focus, I just keep building upon this one.
+                        </p>
+                        <p>
+                          Initially inspired by Erik Rasmussen's, <a href="https://github.com/erikras" rel="nofollow">@erikras</a> and Kévin Berthommier's, <a href="https://github.com/bertho-zero" rel="nofollow">@bertho-zero</a> <a href="https://github.com/bertho-zero/react-redux-universal-hot-example" rel="nofollow">react-redux-universal-hot-example</a>. I have since used a few components from the original (listed below) but have also re-worked and built out several as well.
+                        </p>
+
+                        <p>
+                          Components "borrowed" from <a href="https://github.com/bertho-zero/react-redux-universal-hot-example" rel="nofollow">react-redux-universal-hot-example</a>
+                        </p>
+                        <ul>
+                          <li>
+                            "RouterTrigger.js"
+                          </li>
+                          <li>
+                            "configureStore.js"
+                          </li>
+                        </ul>
+                        <p>
+                          I might place "clientMiddleware.js" in the list above, but that amazingly simple and effective solution goes back to the genius himself <a href="https://github.com/reduxjs/redux/issues/99#issuecomment-112212639" rel="nofollow">Best async serverside loading technique?</a>
+                        </p>
+
                         <h4>
                           Features
                         </h4>
@@ -80,6 +83,7 @@ const ReadmeModal = () => {
                             Listed feature 2 ...
                           </li>
                         </ul>
+
                         <h4>
                           Future directions
                         </h4>
@@ -90,8 +94,43 @@ const ReadmeModal = () => {
                         {/* ------------------------------ */}
 
                         <h3>
+                          Installation
+                        </h3>
+
+                        <hr className={`${styles.hrStyle}`} />
+
+                        <h4>
+                          Development
+                        </h4>
+                        <ol>
+                          <li>
+                            Installation 1 ...
+                          </li>
+                          <li>
+                            Installation 2 ...
+                          </li>
+                        </ol>
+
+                        <h4>
+                          Production
+                        </h4>
+                        <ol>
+                          <li>
+                            Installation 1 ...
+                          </li>
+                          <li>
+                            Installation 2 ...
+                          </li>
+                        </ol>
+
+                        {/* ------------------------------ */}
+
+                        <h3>
                           Contributing
                         </h3>
+
+                        <hr className={`${styles.hrStyle}`} />
+
                         <p>
                           Contributing here...
                         </p>

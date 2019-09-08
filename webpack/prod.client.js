@@ -63,9 +63,9 @@ module.exports = {
   name: 'client',
   target: 'web',
   mode: 'production',
+  // devtool: (none) > fastest > quality: bundled code
   // devtool: 'hidden-source-map', // SourceMap without reference in original file
   // devtool: 'source-map', // most detailed at the expense of build speed
-  // enhance debugging by adding meta info for the browser devtools
 
   entry: {
     main: [
@@ -116,9 +116,6 @@ module.exports = {
           },
           {
             loader: 'resolve-url-loader',
-            options: {
-              // sourceMap: true,
-            },
           },
           {
             loader: 'postcss-loader',
@@ -134,8 +131,8 @@ module.exports = {
             options: {
               sassOptions: {
                 sourceMap: true,
-                sourceMapContents: false,
-                outputStyle: 'expanded',
+                // sourceMapContents: true, default: false
+                outputStyle: 'compressed', // default: nested, expanded, compact, compressed
               },
             }
           },
@@ -291,10 +288,12 @@ module.exports = {
     new CopyPlugin([
       { from: path.resolve(buildPath, './favicon.ico'), to: assetPath },
       { from: path.resolve(buildPath, './manifest.json'), to: assetPath },
-      { from: path.resolve(buildPath, './launcher-icon-2x.png'), to: assetPath },
-      { from: path.resolve(buildPath, './launcher-icon-3x.png'), to: assetPath },
-      { from: path.resolve(buildPath, './launcher-icon-4x.png'), to: assetPath },
-      { from: path.resolve(buildPath, './launcher-icon-5x.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-48-48.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-72-72.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-96-96.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-144-144.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-192-192.png'), to: assetPath },
+      { from: path.resolve(buildPath, './launcher-icon-512-512.png'), to: assetPath },
     ]),
 
     // new WebpackPwaManifest({
@@ -446,12 +445,14 @@ module.exports = {
       clientsClaim: true,
       skipWaiting: true,
       importWorkboxFrom: 'local',
+      // importWorkboxFrom: 'cdn',
       navigateFallback: '/dist/index.html',
       // // Exempt all URLs that start with /_ or contain admin anywhere:
       // navigateFallbackBlacklist: [/^\/_/, /admin/],
       // // Include URLs that start with /pages:
       // navigateFallbackWhitelist: [/^\/pages/],
-      // // Do not precache images
+      // // Do not precache:
+      exclude: [/\.map$/,],
       // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
       runtimeCaching: [
         {

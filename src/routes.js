@@ -15,9 +15,10 @@ import {
   CodeSampleWebpackProdClient,
   CodeSampleWebpackProdServer,
   CodeSampleProd,
+  CodeSampleStylesGlobalScss,
 } from './containers';
 
-import './theme/scss/bootstrap/bootstrap.global.scss';
+import './theme/scss/bootstrap/styles.global.scss';
 
 // const isAuthenticated = connectedReduxRedirect({
 //   redirectPath: '/login',
@@ -54,6 +55,7 @@ const routes = [{
     { path: '/codesamplewebpackprodclient', component: CodeSampleWebpackProdClient },
     { path: '/codesamplewebpackprodserver', component: CodeSampleWebpackProdServer },
     { path: '/codesampleprod', component: CodeSampleProd },
+    { path: '/codesamplestylesglobalscss', component: CodeSampleBootstrapGlobalScss },
     // { path: '/login-success', component: isAuthenticated(LoginSuccess) },
     // { path: '/register', component: isNotAuthenticated(Register) },
     { component: NotFound }

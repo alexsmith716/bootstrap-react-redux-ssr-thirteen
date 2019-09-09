@@ -122,6 +122,7 @@ class App extends Component {
                       <Link to='/codesamplewebpackprodclient' className="dropdown-item js-scroll-trigger">webpack prod client</Link>
                       <Link to='/codesamplewebpackprodserver' className="dropdown-item js-scroll-trigger">webpack prod server</Link>
                       <Link to='/codesampleprod' className="dropdown-item js-scroll-trigger">component prod</Link>
+                      <Link to='/codesamplestylesglobalscss' className="dropdown-item js-scroll-trigger">styles global scss</Link>
                     </div>
                   </li>
 

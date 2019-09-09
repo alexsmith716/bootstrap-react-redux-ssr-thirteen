@@ -1,47 +1,10 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-class CodeSampleWebpackProdClient extends Component {
+const CodeSampleWebpackProdClient = () => {
 
-  // called after the first render
-  componentDidMount() {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > componentDidMount() <<<<<<<<<<<<<<<<<<<<<<');
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > componentDidUpdate() <<<<<<<<<<<<<<<<<<<<<<');
-  }
-
-  componentWillUnmount() {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > componentWillUnmount() <<<<<<<<<<<<<<');
-  }
-
-  // invoked before rendering when new props or state are being received
-  // --------------------------------------------------------------------------------
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > shouldComponentUpdate() > nextProps: ', nextProps);
-    return nextProps;
-  };
-
-  // ERROR HANDLING (error during render, in a lifecycle, in the constructor of any child component)
-  // ----------------------------------------------------------------------------------------------
-  // ----------------------------------------------------------------------------------------------
-
-  static getDerivedStateFromError(error) {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > getDerivedStateFromError() > error: ', error);
-    // Update state so the next render will show the fallback UI.
-    // return { hasError: true };
-    return;
-  }
-
-  componentDidCatch(error, info) {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdClient > componentDidCatch() > info.componentStack: ', info.componentStack);
-  }
-
-  render() {
-
-    return (
+  return (
 
       <div className="container">
 
@@ -56,7 +19,6 @@ class CodeSampleWebpackProdClient extends Component {
           <div>
 
             <pre className="pre-style" >
-
 {`
 const path = require('path');
 const webpack = require('webpack');
@@ -410,9 +372,9 @@ module.exports = {
           </div>
         </div>
       </div>
-
-    );
-  }
+  );
 };
+
+// CodeSampleWebpackProdClient.propTypes = {};
 
 export default CodeSampleWebpackProdClient;

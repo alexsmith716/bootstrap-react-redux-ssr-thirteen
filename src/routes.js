@@ -14,6 +14,7 @@ import Register from './containers/Register/Loadable';
 import { 
   CodeSampleWebpackProdClient,
   CodeSampleWebpackProdServer,
+  CodeSampleProd,
 } from './containers';
 
 import './theme/scss/bootstrap/bootstrap.global.scss';
@@ -52,6 +53,7 @@ const routes = [{
     { path: '/register', component: Register },
     { path: '/codesamplewebpackprodclient', component: CodeSampleWebpackProdClient },
     { path: '/codesamplewebpackprodserver', component: CodeSampleWebpackProdServer },
+    { path: '/codesampleprod', component: CodeSampleProd },
     // { path: '/login-success', component: isAuthenticated(LoginSuccess) },
     // { path: '/register', component: isNotAuthenticated(Register) },
     { component: NotFound }

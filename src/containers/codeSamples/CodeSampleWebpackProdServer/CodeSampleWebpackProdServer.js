@@ -1,47 +1,10 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-class CodeSampleWebpackProdServer extends Component {
+const CodeSampleWebpackProdServer = () => {
 
-  // called after the first render
-  componentDidMount() {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > componentDidMount() <<<<<<<<<<<<<<<<<<<<<<');
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > componentDidUpdate() <<<<<<<<<<<<<<<<<<<<<<');
-  }
-
-  componentWillUnmount() {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > componentWillUnmount() <<<<<<<<<<<<<<');
-  }
-
-  // invoked before rendering when new props or state are being received
-  // --------------------------------------------------------------------------------
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > shouldComponentUpdate() > nextProps: ', nextProps);
-    return nextProps;
-  };
-
-  // ERROR HANDLING (error during render, in a lifecycle, in the constructor of any child component)
-  // ----------------------------------------------------------------------------------------------
-  // ----------------------------------------------------------------------------------------------
-
-  static getDerivedStateFromError(error) {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > getDerivedStateFromError() > error: ', error);
-    // Update state so the next render will show the fallback UI.
-    // return { hasError: true };
-    return;
-  }
-
-  componentDidCatch(error, info) {
-    console.log('>>>>>>>>>>>>>>>> CodeSampleWebpackProdServer > componentDidCatch() > info.componentStack: ', info.componentStack);
-  }
-
-  render() {
-
-    return (
+  return (
 
       <div className="container">
 
@@ -56,7 +19,6 @@ class CodeSampleWebpackProdServer extends Component {
           <div>
 
             <pre className="pre-style" >
-
 {`
 const fs = require('fs');
 const path = require('path');
@@ -284,9 +246,9 @@ module.exports = {
           </div>
         </div>
       </div>
-
-    );
-  }
+  );
 };
+
+// CodeSampleWebpackProdServer.propTypes = {};
 
 export default CodeSampleWebpackProdServer;

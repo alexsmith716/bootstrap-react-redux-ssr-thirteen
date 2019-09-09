@@ -1,4 +1,25 @@
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet-async';
+// import PropTypes from 'prop-types';
 
+const CodeSampleStylesGlobalScss = () => {
+
+  return (
+
+      <div className="container">
+
+        <Helmet title="Code Sample Styles Global Scss" />
+
+        <h1 className="mt-4 mb-3">Global Scss Styles</h1>
+
+        <h4 className="mt-4 mb-3">file: styles.global.scss</h4>
+
+        <div className="row">
+
+          <div>
+
+            <pre className="pre-style" >
+{`
 @import "../app/functions.scss";
 @import "../app/variables.scss";
 @import "../app/fonts.scss";
@@ -114,7 +135,18 @@ $fa-var-sign-out-alt: \f2f5;
 // ---------------------------------------------
 
 @import "../app/mixins.scss";
-
 @import '../app/nprogress.scss';
-
 @import "../app/app.scss";
+
+`}
+            </pre>
+
+          </div>
+        </div>
+      </div>
+  );
+};
+
+// CodeSampleStylesGlobalScss.propTypes = {};
+
+export default CodeSampleStylesGlobalScss;

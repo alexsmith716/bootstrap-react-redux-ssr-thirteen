@@ -1,3 +1,25 @@
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet-async';
+// import PropTypes from 'prop-types';
+
+const CodeSampleProd = () => {
+
+  return (
+
+      <div className="container">
+
+        <Helmet title="Code Sample Component Prod" />
+
+        <h1 className="mt-4 mb-3">Component Prod</h1>
+
+        <h4 className="mt-4 mb-3">file: prod.js</h4>
+
+        <div className="row">
+
+          <div>
+
+            <pre className="pre-style" >
+{`
 import _ from 'lodash';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -10,30 +32,22 @@ import qs from 'qs';
 import { Link } from 'react-router-dom';
 
 import { isLoaded as isInfoLoaded, load as loadInfo } from '../../redux/modules/info';
-import { InfoBar } from '../../components'; //Notifs
+import { InfoBar } from '../../components';
 import { Footer } from '../../components';
 import { ReadmeModal } from '../../components';
 import { FontsModal } from '../../components';
 import config from '../../../config/config';
 
-// --------------------------------------------------------------------------
-
 @provideHooks({
   fetch: async ({ store: { dispatch, getState } }) => {
     if (!isInfoLoaded(getState())) {
       await dispatch(loadInfo()).catch(() => null);
-      console.log('>>>>>>>>>>>>>>>>> APP > dispatch(loadInfo()) 1111>>>>>>>>>>>>>>>>>>>>>>>>v: ');
     } else {
-      console.log('>>>>>>>>>>>>>>>>> APP > dispatch(loadInfo()) 2222>>>>>>>>>>>>>>>>>>>>>>>>i: ');
     }
   }
 })
 
-// --------------------------------------------------------------------------
-
 @withRouter
-
-// --------------------------------------------------------------------------
 
 class App extends Component {
 
@@ -41,7 +55,6 @@ class App extends Component {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
     // user: PropTypes.shape({ email: PropTypes.string }),
-    // notifs: PropTypes.shape({global: PropTypes.array}).isRequired,
   };
 
   static defaultProps = {
@@ -127,7 +140,7 @@ class App extends Component {
 
                   <li className="nav-item">
                     <Link to='/login' className="nav-link js-scroll-trigger">
-                      <span className={`fas fa-fw fa-sign-in-alt ${styles.sharedVarColorRutgersScarletXX}`}></span>Login</Link>
+                      <span className={\`fas fa-fw fa-sign-in-alt \${styles.sharedVarColorRutgersScarletXX}\`}></span>Login</Link>
                   </li>
 
                   <li className="nav-item">
@@ -140,7 +153,7 @@ class App extends Component {
 
                   <li className="nav-item">
                     <a className="nav-link font-norwester" href="#">
-                      <span className={`fas fa-fw fa-headphones ${styles.colorGoldLocal}`}></span><span className={styles.testColorFont}>Headphones!</span></a>
+                      <span className={\`fas fa-fw fa-headphones \${styles.colorGoldLocal}\`}></span><span className={styles.testColorFont}>Headphones!</span></a>
                   </li>
 
                   <li className="nav-item dropdown">
@@ -182,3 +195,15 @@ class App extends Component {
 }
 
 export default App;
+`}
+            </pre>
+
+          </div>
+        </div>
+      </div>
+  );
+};
+
+// CodeSampleProd.propTypes = {};
+
+export default CodeSampleProd;

@@ -13,6 +13,7 @@ export CodeSampleFilterabletable from './codeSamples/CodeSampleFilterabletable/C
 export CodeSampleReduxFilterabletable from './codeSamples/CodeSampleReduxFilterabletable/CodeSampleReduxFilterabletable';
 export CodeSampleInfoBar from './codeSamples/CodeSampleInfoBar/CodeSampleInfoBar';
 export CodeSampleReduxInfo from './codeSamples/CodeSampleReduxInfo/CodeSampleReduxInfo';
+export CodeSampleReduxLineChart from './codeSamples/CodeSampleReduxLineChart/CodeSampleReduxLineChart';
 export CodeSampleMockAPI from './codeSamples/CodeSampleMockAPI/CodeSampleMockAPI';
 export CodeSampleTimeElapsedClass from './codeSamples/CodeSampleTimeElapsedClass/CodeSampleTimeElapsedClass';
 export CodeSampleTimeElapsedClassTwo from './codeSamples/CodeSampleTimeElapsedClassTwo/CodeSampleTimeElapsedClassTwo';

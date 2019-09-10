@@ -11,12 +11,13 @@ import Login from './containers/Login/Loadable';
 import Register from './containers/Register/Loadable';
 // import LoginSuccess from './containers/LoginSuccess/Loadable';
 
-import { 
+import {
+  CodeSampleStart,
   CodeSampleWebpackProdClient,
   CodeSampleWebpackProdServer,
-  CodeSampleApp,
+  CodeSampleServer,
   CodeSampleStylesGlobalScss,
-  CodeSampleStart,
+  CodeSampleApp,
 } from './containers';
 
 import './theme/scss/global/styles.global.scss';
@@ -55,8 +56,9 @@ const routes = [{
     { path: '/register', component: Register },
     { path: '/codesamplestart', component: CodeSampleStart },
     { path: '/codesamplewebpackprodclient', component: CodeSampleWebpackProdClient },
-    { path: '/codesamplestylesglobalscss', component: CodeSampleStylesGlobalScss },
     { path: '/codesamplewebpackprodserver', component: CodeSampleWebpackProdServer },
+    { path: '/codesampleserver', component: CodeSampleServer },
+    { path: '/codesamplestylesglobalscss', component: CodeSampleStylesGlobalScss },
     { path: '/codesampleapp', component: CodeSampleApp },
     // { path: '/login-success', component: isAuthenticated(LoginSuccess) },
     // { path: '/register', component: isNotAuthenticated(Register) },

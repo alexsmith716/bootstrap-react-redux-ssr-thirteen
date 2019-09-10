@@ -131,9 +131,12 @@ class App extends Component {
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Code Samples</a>
                     <div className="dropdown-menu" aria-labelledby="dropdown01">
+                      <Link to='/codesamplestart' className="dropdown-item js-scroll-trigger">bin start</Link>
                       <Link to='/codesamplewebpackprodclient' className="dropdown-item js-scroll-trigger">webpack prod client</Link>
                       <Link to='/codesamplewebpackprodserver' className="dropdown-item js-scroll-trigger">webpack prod server</Link>
-                      <Link to='/codesampleprod' className="dropdown-item js-scroll-trigger">component prod</Link>
+                      <Link to='/codesampleserver' className="dropdown-item js-scroll-trigger">src server</Link>
+                      <Link to='/codesamplestylesglobalscss' className="dropdown-item js-scroll-trigger">styles global scss</Link>
+                      <Link to='/codesampleapp' className="dropdown-item js-scroll-trigger">component App.js</Link>
                     </div>
                   </li>
 

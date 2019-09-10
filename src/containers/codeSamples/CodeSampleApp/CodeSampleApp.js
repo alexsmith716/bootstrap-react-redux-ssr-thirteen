@@ -1,18 +1,17 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
-// import PropTypes from 'prop-types';
 
-const CodeSampleProd = () => {
+const CodeSampleApp = () => {
 
   return (
 
       <div className="container">
 
-        <Helmet title="Code Sample Component Prod" />
+        <Helmet title="Code Sample Component App.js" />
 
-        <h1 className="mt-4 mb-3">Component Prod</h1>
+        <h1 className="mt-4 mb-3">Component App</h1>
 
-        <h4 className="mt-4 mb-3">file: prod.js</h4>
+        <h4 className="mt-4 mb-3">file: src > containers > App > App.js</h4>
 
         <div className="row">
 
@@ -204,6 +203,4 @@ export default App;
   );
 };
 
-// CodeSampleProd.propTypes = {};
-
-export default CodeSampleProd;
+export default CodeSampleApp;

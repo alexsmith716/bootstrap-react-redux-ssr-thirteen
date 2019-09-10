@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
-// import PropTypes from 'prop-types';
 
 const CodeSampleStylesGlobalScss = () => {
 
@@ -12,7 +11,7 @@ const CodeSampleStylesGlobalScss = () => {
 
         <h1 className="mt-4 mb-3">Global Scss Styles</h1>
 
-        <h4 className="mt-4 mb-3">file: styles.global.scss</h4>
+        <h4 className="mt-4 mb-3">file: src > theme > scss > global > styles.global.scss</h4>
 
         <div className="row">
 
@@ -146,7 +145,5 @@ $fa-var-sign-out-alt: \f2f5;
       </div>
   );
 };
-
-// CodeSampleStylesGlobalScss.propTypes = {};
 
 export default CodeSampleStylesGlobalScss;

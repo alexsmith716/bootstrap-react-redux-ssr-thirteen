@@ -4,5 +4,6 @@ export NotFound from './NotFound/NotFound';
 
 export CodeSampleWebpackProdClient from './codeSamples/CodeSampleWebpackProdClient/CodeSampleWebpackProdClient';
 export CodeSampleWebpackProdServer from './codeSamples/CodeSampleWebpackProdServer/CodeSampleWebpackProdServer';
-export CodeSampleProd from './codeSamples/CodeSampleProd/CodeSampleProd';
+export CodeSampleApp from './codeSamples/CodeSampleApp/CodeSampleApp';
 export CodeSampleStylesGlobalScss from './codeSamples/CodeSampleStylesGlobalScss/CodeSampleStylesGlobalScss';
+export CodeSampleStart from './codeSamples/CodeSampleStart/CodeSampleStart';

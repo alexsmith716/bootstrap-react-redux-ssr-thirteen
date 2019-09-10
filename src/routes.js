@@ -14,11 +14,12 @@ import Register from './containers/Register/Loadable';
 import { 
   CodeSampleWebpackProdClient,
   CodeSampleWebpackProdServer,
-  CodeSampleProd,
+  CodeSampleApp,
   CodeSampleStylesGlobalScss,
+  CodeSampleStart,
 } from './containers';
 
-import './theme/scss/bootstrap/styles.global.scss';
+import './theme/scss/global/styles.global.scss';
 
 // const isAuthenticated = connectedReduxRedirect({
 //   redirectPath: '/login',
@@ -52,10 +53,11 @@ const routes = [{
     { path: '/boardgames', component: BoardGames },
     { path: '/login', component: Login },
     { path: '/register', component: Register },
+    { path: '/codesamplestart', component: CodeSampleStart },
     { path: '/codesamplewebpackprodclient', component: CodeSampleWebpackProdClient },
+    { path: '/codesamplestylesglobalscss', component: CodeSampleStylesGlobalScss },
     { path: '/codesamplewebpackprodserver', component: CodeSampleWebpackProdServer },
-    { path: '/codesampleprod', component: CodeSampleProd },
-    { path: '/codesamplestylesglobalscss', component: CodeSampleBootstrapGlobalScss },
+    { path: '/codesampleapp', component: CodeSampleApp },
     // { path: '/login-success', component: isAuthenticated(LoginSuccess) },
     // { path: '/register', component: isNotAuthenticated(Register) },
     { component: NotFound }

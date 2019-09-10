@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
-// import PropTypes from 'prop-types';
 
 const CodeSampleWebpackProdClient = () => {
 
@@ -12,7 +11,7 @@ const CodeSampleWebpackProdClient = () => {
 
         <h1 className="mt-4 mb-3">Webpack Production Client Build</h1>
 
-        <h4 className="mt-4 mb-3">file: prod.client.js</h4>
+        <h4 className="mt-4 mb-3">file: webpack > prod.client.js</h4>
 
         <div className="row">
 
@@ -374,7 +373,5 @@ module.exports = {
       </div>
   );
 };
-
-// CodeSampleWebpackProdClient.propTypes = {};
 
 export default CodeSampleWebpackProdClient;

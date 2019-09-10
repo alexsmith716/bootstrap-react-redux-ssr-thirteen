@@ -58,7 +58,7 @@ module.exports = {
 
   entry: {
     main: [
-      // './src/theme/scss/bootstrap/global.styles.scss',
+      // './src/theme/scss/global/global.styles.scss',
       'bootstrap',
       './src/client.js',
     ]

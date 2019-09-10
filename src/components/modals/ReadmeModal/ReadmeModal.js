@@ -164,6 +164,9 @@ const ReadmeModal = () => {
                             Iterate over and keep refining <a href="https://github.com/reduxjs/redux" rel="nofollow">Redux</a> (initial state/state/reducer)
                           </li>
                           <li>
+                            Handle errors (log & throw)
+                          </li>
+                          <li>
                             Implement <a href="https://github.com/microsoft/TypeScript" rel="nofollow">TypeScript</a> type checking
                           </li>
                           <li>

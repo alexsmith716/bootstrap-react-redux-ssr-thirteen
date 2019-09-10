@@ -135,6 +135,7 @@ class App extends Component {
                       <Link to='/codesamplereduxfilterabletable' className="dropdown-item js-scroll-trigger">redux module filterableTable.js</Link>
                       <Link to='/codesampleinfobar' className="dropdown-item js-scroll-trigger">component InfoBar.js</Link>
                       <Link to='/codesamplereduxinfo' className="dropdown-item js-scroll-trigger">redux module info.js</Link>
+                      <Link to='/codesamplereduxlinechart' className="dropdown-item js-scroll-trigger">redux module lineChart.js</Link>
                       <Link to='/codesampleutilsmockapi' className="dropdown-item js-scroll-trigger">util mockAPI.js</Link>
                       <Link to='/codesampleutilstimeelapsedclass' className="dropdown-item js-scroll-trigger">util timeElapsedClass.js</Link>
                       <Link to='/codesampleutilstimeelapsedclasstwo' className="dropdown-item js-scroll-trigger">util timeElapsedClassTwo.js</Link>

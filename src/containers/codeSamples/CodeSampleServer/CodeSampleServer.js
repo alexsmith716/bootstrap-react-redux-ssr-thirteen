@@ -7,9 +7,9 @@ const CodeSampleServer = () => {
 
       <div className="container">
 
-        <Helmet title="Code Sample server.js" />
+        <Helmet title="Code Sample Server" />
 
-        <h1 className="mt-4 mb-3">server.js</h1>
+        <h1 className="mt-4 mb-3">Src Server</h1>
 
         <h4 className="mt-4 mb-3">file: src > server.js</h4>
 

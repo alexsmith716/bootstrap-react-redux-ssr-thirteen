@@ -13,9 +13,22 @@ class Home extends Component {
     online: PropTypes.bool.isRequired
   };
 
+  // static defaultProps = {};
+  state = { prevProps: this.props };
+
   componentDidMount() {
     console.log('>>>>>>>>>>>>>>>> HOME > componentDidMount() <<<<<<<<<<<<<<');
   }
+
+  static getDerivedStateFromProps(props, state) {
+    const { prevProps } = state;
+    // chance to compare incoming props to previous props
+    console.log('>>>>>>>>>>>>>>>> HOME > getDerivedStateFromProps() <<<<<<<<<<<<<<<<<<<<<<');
+    // return {
+    //   prevProps: props
+    // };
+    return null;
+  };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('>>>>>>>>>>>>>>>> HOME > componentDidUpdate() <<<<<<<<<<<<<<');

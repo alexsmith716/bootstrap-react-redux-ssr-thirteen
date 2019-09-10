@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const FontsModal = props => {
 
@@ -55,7 +54,5 @@ const FontsModal = props => {
     </div>
   );
 };
-
-// FontsModal.propTypes = {};
 
 export default FontsModal;

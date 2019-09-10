@@ -7,9 +7,9 @@ const CodeSampleStart = () => {
 
       <div className="container">
 
-        <Helmet title="Code Sample Component App.js" />
+        <Helmet title="Code Sample Start" />
 
-        <h1 className="mt-4 mb-3">Component App</h1>
+        <h1 className="mt-4 mb-3">Bin Start</h1>
 
         <h4 className="mt-4 mb-3">file: bin > start.js</h4>
 

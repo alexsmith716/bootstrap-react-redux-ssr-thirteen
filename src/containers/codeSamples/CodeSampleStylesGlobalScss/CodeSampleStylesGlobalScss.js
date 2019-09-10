@@ -28,7 +28,7 @@ const CodeSampleStylesGlobalScss = () => {
 $body-bg: #F7F7F7;
 $font-size-base: .875rem;
 $navbar-dark-color: #C6E2FF;
-$dropdown-bg: #FFFF00;
+$dropdown-bg: #F0F8FF;
 $navbar-dark-active-color: #00BFFF;
 
 // ---------------------------------------------

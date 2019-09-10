@@ -1,3 +1,24 @@
+import React, { Fragment } from 'react';
+import { Helmet } from 'react-helmet-async';
+
+const CodeSampleInfoBar = () => {
+
+  return (
+
+      <div className="container">
+
+        <Helmet title="Code Sample InfoBar" />
+
+        <h1 className="mt-4 mb-3">Component InfoBar</h1>
+
+        <h4 className="mt-4 mb-3">file: src > components > InfoBar > InfoBar.js</h4>
+
+        <div className="row">
+
+          <div>
+
+            <pre className="pre-style" >
+{`
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -18,10 +39,10 @@ class InfoBar extends Component {
 
   static propTypes = {
     // data: PropTypes.shape({
-    //   // value: `${v}`,
+    //   // value: \`\${v}\`,
     //   // timeElapsed: timeElapsedModule1.getSecondsElapsed(),
     //   // time: Date.now(),
-    //   // delay: `${delay}`,
+    //   // delay: \`\${delay}\`,
     //   // message: 'RESOLVED! This came from the mock API.',
     //      loading: PropTypes.bool,
     // }),
@@ -89,7 +110,7 @@ class InfoBar extends Component {
 
           {error && (
 
-              <div className="alert alert-danger text-center" role="alert">RENDERING ERROR<br/><span>{`Message: ${errorResponse.message}`}</span><br/><span>{`Url: ${errorResponse.documentation_url}`}</span></div>
+              <div className="alert alert-danger text-center" role="alert">RENDERING ERROR<br/><span>{\`Message: \${errorResponse.message}\`}</span><br/><span>{\`Url: \${errorResponse.documentation_url}\`}</span></div>
 
             )}
 
@@ -98,7 +119,7 @@ class InfoBar extends Component {
           {!loading && (
 
               <div>
-                <div className={`card-title ${styles.infoBar}`}>
+                <div className={\`card-title \${styles.infoBar}\`}>
                   <h5>InfoBar message: '<span className={styles.message}>{data ? data.message : 'no message!'}</span>'</h5>
 
                   <h6>{data && new Date(data.time).toString()}</h6>
@@ -120,3 +141,14 @@ class InfoBar extends Component {
 }
 
 export default InfoBar;
+
+`}
+            </pre>
+
+          </div>
+        </div>
+      </div>
+  );
+};
+
+export default CodeSampleInfoBar;

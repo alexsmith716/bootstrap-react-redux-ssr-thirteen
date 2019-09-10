@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const ReadmeModal = () => {
 
@@ -126,7 +125,7 @@ const ReadmeModal = () => {
                         {/* ------------------------------ */}
 
                         <h3>
-                          Things To Do
+                          Features To Observe
                         </h3>
 
                         <hr className={`${styles.hrStyle}`} />
@@ -148,6 +147,29 @@ const ReadmeModal = () => {
                             Production Only: view Storage tab > Cache Storage to see workbox-precache
                           </li>
                         </ul>
+
+                        {/* ------------------------------ */}
+
+                        <h3>
+                          To Do List
+                        </h3>
+
+                        <hr className={`${styles.hrStyle}`} />
+
+                        <ol>
+                          <li>
+                            Iterate over and keep refining <a href="https://github.com/facebook/react" rel="nofollow">React</a> (lifecycles)
+                          </li>
+                          <li>
+                            Iterate over and keep refining <a href="https://github.com/reduxjs/redux" rel="nofollow">Redux</a> (initial state/state/reducer)
+                          </li>
+                          <li>
+                            Implement <a href="https://github.com/microsoft/TypeScript" rel="nofollow">TypeScript</a> type checking
+                          </li>
+                          <li>
+                            Tons of other JS dev stuff...
+                          </li>
+                        </ol>
                     </article>
                 </div>
             </div>
@@ -163,7 +185,5 @@ const ReadmeModal = () => {
     </div>
   );
 };
-
-// ReadmeModal.propTypes = {};
 
 export default ReadmeModal;

@@ -229,7 +229,8 @@ module.exports = {
           },
           // mangle: true,
         },
-        sourceMap: true
+        extractComments: false,
+        sourceMap: true,
       }),
       // minify css (default: cssnano)
       // preset:[] : cssnanoOpts

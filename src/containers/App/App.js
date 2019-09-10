@@ -57,18 +57,10 @@ class App extends Component {
     console.log('>>>>>>>>>>>>>>>> APP > componentDidMount() <<<<<<<<<<<<<<');
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('>>>>>>>>>>>>>>>> APP > componentDidUpdate() <<<<<<<<<<<<<<');
-    // const { location } = this.props;
-    // if (location.pathname !== prevProps.location.pathname) {
-    //   window.scrollTo(0, 0);
-    // }
-  }
-
   static getDerivedStateFromProps(props, state) {
     console.log('>>>>>>>>>>>>>>>> APP > getDerivedStateFromProps() <<<<<<<<<<<<<<');
     const { prevProps } = state;
-    // Compare the incoming prop to previous prop
+    // chance to compare incoming props to previous props
     const user = !_.isEqual(prevProps.user, props.user) ? props.user : state.user;
 
     if (!prevProps.user && props.user) {
@@ -84,6 +76,18 @@ class App extends Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log('>>>>>>>>>>>>>>>> APP > componentDidUpdate() <<<<<<<<<<<<<<');
+    // const { location } = this.props;
+    // if (location.pathname !== prevProps.location.pathname) {
+    //   window.scrollTo(0, 0);
+    // }
+  }
+
+  componentWillUnmount() {
+    console.log('>>>>>>>>>>>>>>>> APP > componentWillUnmount() <<<<<<<<<<<<<<');
+  }
+
   render() {
 
     const { notifs, route } = this.props;
@@ -97,6 +101,8 @@ class App extends Component {
         <div className={styles.app}>
 
           <Helmet {...config.app.head} />
+
+          {/* ------------- Bootstrap Navbar ------------- */}
 
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
 
@@ -124,7 +130,15 @@ class App extends Component {
                       <Link to='/codesamplewebpackprodserver' className="dropdown-item js-scroll-trigger">webpack prod server</Link>
                       <Link to='/codesampleserver' className="dropdown-item js-scroll-trigger">src server</Link>
                       <Link to='/codesamplestylesglobalscss' className="dropdown-item js-scroll-trigger">styles global scss</Link>
-                      <Link to='/codesampleapp' className="dropdown-item js-scroll-trigger">component App.js</Link>
+                      <Link to='/codesampleapp' className="dropdown-item js-scroll-trigger">container App.js</Link>
+                      <Link to='/codesamplefilterabletable' className="dropdown-item js-scroll-trigger">component FilterableTable.js</Link>
+                      <Link to='/codesamplereduxfilterabletable' className="dropdown-item js-scroll-trigger">redux module filterableTable.js</Link>
+                      <Link to='/codesampleinfobar' className="dropdown-item js-scroll-trigger">component InfoBar.js</Link>
+                      <Link to='/codesamplereduxinfo' className="dropdown-item js-scroll-trigger">redux module info.js</Link>
+                      <Link to='/codesampleutilsmockapi' className="dropdown-item js-scroll-trigger">util mockAPI.js</Link>
+                      <Link to='/codesampleutilstimeelapsedclass' className="dropdown-item js-scroll-trigger">util timeElapsedClass.js</Link>
+                      <Link to='/codesampleutilstimeelapsedclasstwo' className="dropdown-item js-scroll-trigger">util timeElapsedClassTwo.js</Link>
+                      <Link to='/codesampleutilstimeelapsedmodule' className="dropdown-item js-scroll-trigger">util timeElapsedModule.js</Link>
                     </div>
                   </li>
 
@@ -162,15 +176,23 @@ class App extends Component {
             </div>
           </nav>
 
+          {/* ------------- Main Content ------------- */}
+
           <div className={styles.appContent}>
             {renderRoutes(route.routes)}
           </div>
 
+          {/* --------------- InfoBar ---------------- */}
+
           <InfoBar />
+
+          {/* --------------- Footer ----------------- */}
 
           <Footer 
             styles={ styles }
           />
+
+          {/* --------------- Modals ----------------- */}
 
           <ReadmeModal />
 

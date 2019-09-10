@@ -18,6 +18,14 @@ import {
   CodeSampleServer,
   CodeSampleStylesGlobalScss,
   CodeSampleApp,
+  CodeSampleFilterabletable,
+  CodeSampleReduxFilterabletable,
+  CodeSampleInfoBar,
+  CodeSampleReduxInfo,
+  CodeSampleMockAPI,
+  CodeSampleTimeElapsedClass,
+  CodeSampleTimeElapsedClassTwo,
+  CodeSampleTimeElapsedModule,
 } from './containers';
 
 import './theme/scss/global/styles.global.scss';
@@ -60,6 +68,14 @@ const routes = [{
     { path: '/codesampleserver', component: CodeSampleServer },
     { path: '/codesamplestylesglobalscss', component: CodeSampleStylesGlobalScss },
     { path: '/codesampleapp', component: CodeSampleApp },
+    { path: '/codesamplefilterabletable', component: CodeSampleFilterabletable },
+    { path: '/codesamplereduxfilterabletable', component: CodeSampleReduxFilterabletable },
+    { path: '/codesampleinfobar', component: CodeSampleInfoBar },
+    { path: '/codesamplereduxinfo', component: CodeSampleReduxInfo },
+    { path: '/codesampleutilsmockapi', component: CodeSampleMockAPI },
+    { path: '/codesampleutilstimeelapsedclass', component: CodeSampleTimeElapsedClass },
+    { path: '/codesampleutilstimeelapsedclasstwo', component: CodeSampleTimeElapsedClassTwo },
+    { path: '/codesampleutilstimeelapsedmodule', component: CodeSampleTimeElapsedModule },
     // { path: '/login-success', component: isAuthenticated(LoginSuccess) },
     // { path: '/register', component: isNotAuthenticated(Register) },
     { component: NotFound }

@@ -7,9 +7,9 @@ const CodeSampleApp = () => {
 
       <div className="container">
 
-        <Helmet title="Code Sample Component App.js" />
+        <Helmet title="Code Sample Container App" />
 
-        <h1 className="mt-4 mb-3">Component App</h1>
+        <h1 className="mt-4 mb-3">Container App</h1>
 
         <h4 className="mt-4 mb-3">file: src > containers > App > App.js</h4>
 
@@ -54,6 +54,7 @@ class App extends Component {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
     // user: PropTypes.shape({ email: PropTypes.string }),
+    // notifs: PropTypes.shape({global: PropTypes.array}).isRequired,
   };
 
   static defaultProps = {
@@ -69,18 +70,10 @@ class App extends Component {
     console.log('>>>>>>>>>>>>>>>> APP > componentDidMount() <<<<<<<<<<<<<<');
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('>>>>>>>>>>>>>>>> APP > componentDidUpdate() <<<<<<<<<<<<<<');
-    // const { location } = this.props;
-    // if (location.pathname !== prevProps.location.pathname) {
-    //   window.scrollTo(0, 0);
-    // }
-  }
-
   static getDerivedStateFromProps(props, state) {
     console.log('>>>>>>>>>>>>>>>> APP > getDerivedStateFromProps() <<<<<<<<<<<<<<');
     const { prevProps } = state;
-    // Compare the incoming prop to previous prop
+    // chance to compare incoming props to previous props
     const user = !_.isEqual(prevProps.user, props.user) ? props.user : state.user;
 
     if (!prevProps.user && props.user) {
@@ -94,6 +87,18 @@ class App extends Component {
       user,
       prevProps: props
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('>>>>>>>>>>>>>>>> APP > componentDidUpdate() <<<<<<<<<<<<<<');
+    // const { location } = this.props;
+    // if (location.pathname !== prevProps.location.pathname) {
+    //   window.scrollTo(0, 0);
+    // }
+  }
+
+  componentWillUnmount() {
+    console.log('>>>>>>>>>>>>>>>> APP > componentWillUnmount() <<<<<<<<<<<<<<');
   }
 
   render() {
@@ -136,7 +141,15 @@ class App extends Component {
                       <Link to='/codesamplewebpackprodserver' className="dropdown-item js-scroll-trigger">webpack prod server</Link>
                       <Link to='/codesampleserver' className="dropdown-item js-scroll-trigger">src server</Link>
                       <Link to='/codesamplestylesglobalscss' className="dropdown-item js-scroll-trigger">styles global scss</Link>
-                      <Link to='/codesampleapp' className="dropdown-item js-scroll-trigger">component App.js</Link>
+                      <Link to='/codesampleapp' className="dropdown-item js-scroll-trigger">container App.js</Link>
+                      <Link to='/codesamplefilterabletable' className="dropdown-item js-scroll-trigger">component FilterableTable.js</Link>
+                      <Link to='/codesamplereduxfilterabletable' className="dropdown-item js-scroll-trigger">redux module filterableTable.js</Link>
+                      <Link to='/codesampleinfobar' className="dropdown-item js-scroll-trigger">component InfoBar.js</Link>
+                      <Link to='/codesamplereduxinfo' className="dropdown-item js-scroll-trigger">redux module info.js</Link>
+                      <Link to='/codesampleutilsmockapi' className="dropdown-item js-scroll-trigger">util mockAPI.js</Link>
+                      <Link to='/codesampleutilstimeelapsedclass' className="dropdown-item js-scroll-trigger">util timeElapsedClass.js</Link>
+                      <Link to='/codesampleutilstimeelapsedclasstwo' className="dropdown-item js-scroll-trigger">util timeElapsedClassTwo.js</Link>
+                      <Link to='/codesampleutilstimeelapsedmodule' className="dropdown-item js-scroll-trigger">util timeElapsedModule.js</Link>
                     </div>
                   </li>
 
